@@ -32,6 +32,8 @@ public struct Meeting: Codable, Identifiable, Sendable {
     public var status: Status
     public var error: String?
     public var transcript: [TranscriptLine] = []
+    /// Notes from the on-device model, made when asked.
+    public var summary: Summary?
 
     public init(id: String, app: CallApp, startedAt: Date, meetingURL: String?) {
         self.id = id

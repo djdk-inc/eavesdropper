@@ -174,12 +174,28 @@ let snap = CalendarSnapshot(fetchedAt: snapNow, events: relevant)
 expect((try? CalendarSnapshot.decode(snap.encoded())) == snap, "snapshot JSON round trip")
 expect(calendarSnapshotURL.path.hasSuffix("Library/Application Support/Eavesdropper Calendar/calendar.json"), "snapshot path under real home")
 
+// Transcript chunks for the on-device model
+let many = (0..<50).map { TranscriptLine(start: Double($0 * 10), speaker: "Speaker 1", text: String(repeating: "word ", count: 20)) }
+let chunks = transcriptChunks(many, maxCharacters: 1000)
+expect(chunks.count > 1 && chunks.allSatisfy { $0.count <= 1000 }, "long transcript split under the limit (\(chunks.count) chunks)")
+expect(chunks.joined(separator: "\n") == transcriptText(many), "chunks rejoin to the full transcript, nothing lost")
+expect(transcriptChunks(merged, maxCharacters: 1000) == [transcriptText(merged)], "short transcript is one chunk")
+expect(transcriptChunks([], maxCharacters: 1000).isEmpty, "empty transcript, no chunks")
+let huge = [TranscriptLine(start: 0, speaker: "You", text: String(repeating: "x", count: 2000))]
+expect(transcriptChunks(huge, maxCharacters: 1000).count == 1, "an over-long line still gets a chunk")
+
+// Notes cleanup
+let raw = "## Summary\nShip Wednesday.\n\n## Decisions\n- Wednesday.\n\n## Action items\n\n## Open questions\nNone"
+expect(cleanNotes(raw) == "## Summary\nShip Wednesday.\n\n## Decisions\n- Wednesday.", "empty and None sections dropped (\(cleanNotes(raw).debugDescription))")
+expect(speakerLabels(merged) == ["You", "Others"], "speaker labels in first-appearance order")
+
 // Store round trip
 let dir = FileManager.default.temporaryDirectory.appendingPathComponent("eavesdropper-checks-\(UUID().uuidString)")
 let s2 = MeetingStore(root: dir)
 m.transcript = merged
+m.summary = Summary(text: "## Summary\nShip Wednesday.", createdAt: at("2026-11-25T19:00:00Z"))
 try! s2.save(m)
-expect(s2.all().first?.event == review && s2.all().first?.transcript == merged, "meeting.json round trip")
+expect(s2.all().first?.event == review && s2.all().first?.transcript == merged && s2.all().first?.summary == m.summary, "meeting.json round trip (incl. summary)")
 try? FileManager.default.removeItem(at: dir)
 
 print(failures == 0 ? "all checks passed" : "\(failures) failed")
