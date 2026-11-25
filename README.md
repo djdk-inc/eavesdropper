@@ -12,7 +12,7 @@ Menu bar app that notices when you're in a Zoom or Google Meet call, records it 
   - Zoom app: Zoom is using audio (it only does so in a meeting).
   - Meet or Zoom in a browser (Chrome, Arc, Edge, Brave, Safari): the browser is using audio and has a meeting tab open (`meet.google.com/abc-defg-hij`, `zoom.us/wc/<id>`).
   - Starts after ~4 s, ends ~3 s after audio stops.
-- **Records**: your mic and the meeting app's sound (not music or notifications), written as uncompressed `mic.caf` / `call.caf`, which survive a crash or forced quit. They're compressed to `mic.m4a` / `call.m4a` after transcription.
+- **Records**: your mic and the meeting app's sound (not music or notifications), written as uncompressed `mic.caf` / `call.caf`, which survive a crash or forced quit. They're compressed to `mic.m4a` / `call.m4a` after transcription. Both files stay on the wall clock: if macOS skips audio frames (its system-audio tap does), the gap is filled with silence, so your lines and theirs line up.
 - **Never loses a call**: quitting, updating or logging out mid-call saves the meeting, and the next launch finishes any interrupted recording or transcription.
 - **Transcribes** on-device after the call (Apple SpeechTranscriber). Your mic is labeled `You`; the call's audio is split by voice into `Speaker 1`, `Speaker 2`, … (on-device speaker diarization). The diarizer code and model live in this repo (`Vendor/FluidAudio`, `Models/`), so nothing is fetched at build time or run time.
 - **Titles** the meeting after its Google Calendar invite, matched by Meet code or Zoom meeting ID, falling back to an event happening now. Copies time, organizer, attendees, location, description and link. If the calendar can't be read, the title is the start time.
@@ -50,6 +50,8 @@ open Eavesdropper.app
 
 Each new build counts as a new app to macOS, which then asks for Microphone, System Audio Recording, and control of your browser (to read tab URLs). Allow all three. Quit the running app before rebuilding.
 
+Live test: `./live-test.py --rounds 3` drives the installed app through Start/Stop Listening (`Eavesdropper --control start|stop`) and plays generated meetings through the speakers. Each meeting is a random dialogue spoken by random human-sounding local voices (Kokoro, test-only; setup in [AGENTS.md](AGENTS.md)). The script checks that the recording is complete, the words were heard, speakers are labelled, and both sides line up. Last run on 0.4.2: 3/3 passed, 94–99% of words heard, sides within 0.12 s.
+
 Releases: `./release.sh` (see [AGENTS.md](AGENTS.md)). Every release is reproducible: `./verify-reproducible.sh` rebuilds twice and checks the results are byte-identical.
 
 ## Known limits
@@ -57,7 +59,7 @@ Releases: `./release.sh` (see [AGENTS.md](AGENTS.md)). Every release is reproduc
 - In a Meet or browser-Zoom call, sound from other tabs in that browser is recorded too (one audio process per browser).
 - Meet's pre-join screen uses the mic, so recording starts there.
 - Without headphones your mic also picks up the others, so their words can show up under `You`.
-- Speaker labels are by voice, not name. Similar voices can be merged into one speaker; in a 3-voice test, a male voice was always right but two similar female voices became one speaker.
+- Speaker labels are by voice, not name. Similar voices can be merged into one speaker: in live tests a male voice was always kept apart, but two or three female voices of the same accent were often labelled as one speaker.
 - If diarization fails, the call's lines stay labeled `Others`.
 - Notes come from a small on-device model: good for gist and action items, and it can still misattribute an owner.
 - Firefox isn't supported (its tabs can't be read).
