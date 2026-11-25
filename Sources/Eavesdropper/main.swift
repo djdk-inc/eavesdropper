@@ -186,10 +186,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func render() {
         if let meeting {
-            statusItem.button?.title = "● \(meeting.app.rawValue)"
+            statusItem.button?.image = spyIcon(listening: true)
             statusLine.title = "Listening: \(meeting.title)"
         } else {
-            statusItem.button?.title = "👂"
+            statusItem.button?.image = spyIcon(listening: false)
             statusLine.title = "Waiting for a call"
         }
     }
