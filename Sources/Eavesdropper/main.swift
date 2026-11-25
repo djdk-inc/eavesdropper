@@ -35,10 +35,13 @@ func transcribeMeeting(_ meeting: Meeting) async -> Meeting {
     var meeting = meeting
     let folder = store.folder(for: meeting.id)
     do {
-        async let you = transcribe(folder.appendingPathComponent("mic.m4a"), speaker: "You")
-        async let others = transcribeCall(folder.appendingPathComponent("call.m4a"))
+        async let you = transcribe(recordingFile(folder, "mic"), speaker: "You")
+        async let others = transcribeCall(recordingFile(folder, "call"))
         meeting.transcript = mergeTranscripts(you: try await you, others: try await others)
         meeting.status = .done
+        for side in ["mic", "call"] {
+            do { try compressRecording(folder, side) } catch { log("kept \(side).caf uncompressed: \(error)") }
+        }
     } catch {
         meeting.status = .failed
         meeting.error = "\(error)"
@@ -47,9 +50,41 @@ func transcribeMeeting(_ meeting: Meeting) async -> Meeting {
     return meeting
 }
 
+/// Meetings a quit, crash or update interrupted: marks them ended (at their last audio write) and
+/// transcribes them. `current` is the meeting being recorded right now, if any.
+func recoverUnfinished(except current: String?) async {
+    for var meeting in unfinishedMeetings(store.all(), except: current) {
+        log("recovering \(meeting.id) (was \(meeting.status.rawValue))")
+        meeting.endedAt = meeting.endedAt ?? lastWritten(store.folder(for: meeting.id)) ?? meeting.startedAt
+        meeting.status = .transcribing
+        try? store.save(meeting)
+        let result = await transcribeMeeting(meeting)
+        try? store.update(meeting.id) {
+            $0.endedAt = meeting.endedAt
+            $0.transcript = result.transcript
+            $0.status = result.status
+            $0.error = result.error
+        }
+    }
+}
+
 // MARK: - Command-line modes for checking pieces on their own
 
 let args = CommandLine.arguments
+
+/// `--recover`: finish every interrupted meeting and print the outcome.
+if args.contains("--recover") {
+    Task {
+        let before = unfinishedMeetings(store.all(), except: nil).map(\.id)
+        await recoverUnfinished(except: nil)
+        for meeting in store.all() where before.contains(meeting.id) {
+            print("\(meeting.id): \(meeting.status.rawValue), \(meeting.transcript.count) lines\(meeting.error.map { " (\($0))" } ?? "")")
+        }
+        exit(0)
+    }
+    RunLoop.main.run()
+}
+
 
 /// `--probe`: print what the detector sees right now.
 if args.contains("--probe") {
@@ -225,6 +260,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     /// True while a recording started from the menu runs; call detection pauses until it's stopped.
     private var manual = false
     private let listenItem = NSMenuItem(title: "Start Listening", action: #selector(toggleListening), keyEquivalent: "l")
+    private var terminationSignals: [DispatchSourceSignal] = []
 
     func applicationDidFinishLaunching(_: Notification) {
         let menu = NSMenu()
@@ -242,6 +278,17 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         render()
 
         AVCaptureDevice.requestAccess(for: .audio) { granted in log("microphone access: \(granted)") }
+
+        // A normal kill (SIGTERM, as from an update or logout) saves the meeting before exiting;
+        // the next launch transcribes it.
+        for sig in [SIGTERM, SIGINT] {
+            signal(sig, SIG_IGN)
+            let source = DispatchSource.makeSignalSource(signal: sig, queue: .main)
+            source.setEventHandler { MainActor.assumeIsolated { self.finishForQuit() }; exit(0) }
+            source.resume()
+            terminationSignals.append(source)
+        }
+        Task { await recoverUnfinished(except: nil); list.reload() }
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in Task { @MainActor in self.poll() } }
         log("watching for Zoom and Google Meet calls; meetings go to \(store.root.path)")
     }
@@ -269,10 +316,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             log("could not start recording: \(error)")
         }
         Task {
-            let withEvent = await attachCalendarEvent(to: new)
-            guard meeting?.id == id else { return save(withEvent) } // call already ended
-            meeting?.event = withEvent.event
-            save(meeting!)
+            // May finish after the call has ended and been transcribed: update only the invite.
+            let event = await attachCalendarEvent(to: new).event
+            if meeting?.id == id { meeting?.event = event }
+            update(id) { $0.event = event }
         }
     }
 
@@ -287,9 +334,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         log("\(finished.app.rawValue) call ended; transcribing")
         let id = finished.id
         Task {
-            // Pick up the calendar match if it landed after the call ended.
-            if let latest = store.all().first(where: { $0.id == id }) { finished.event = latest.event }
-            save(await transcribeMeeting(finished))
+            let result = await transcribeMeeting(finished)
+            update(id) {
+                $0.transcript = result.transcript
+                $0.status = result.status
+                $0.error = result.error
+            }
         }
     }
 
@@ -304,6 +354,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             start(Call(app: .manual, processObjectIDs: []))
         }
         render()
+    }
+
+    private func update(_ id: String, _ change: (inout Meeting) -> Void) {
+        do { try store.update(id, change) } catch { log("save failed: \(error)") }
+        list.reload()
     }
 
     private func save(_ meeting: Meeting) {
@@ -337,9 +392,23 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.activate()
     }
 
-    @objc private func quit() {
-        if meeting != nil { end() }
+    /// Stops and saves the meeting in progress without transcribing (that resumes at next launch).
+    private func finishForQuit() {
+        guard var interrupted = meeting else { return }
+        recorder?.stop()
+        recorder = nil
+        meeting = nil
         manual = false
+        interrupted.endedAt = Date()
+        interrupted.status = .transcribing
+        save(interrupted)
+        log("saved \(interrupted.id) for transcription at next launch")
+    }
+
+    func applicationWillTerminate(_: Notification) { finishForQuit() }
+
+    @objc private func quit() {
+        finishForQuit()
         NSApp.terminate(nil)
     }
 }

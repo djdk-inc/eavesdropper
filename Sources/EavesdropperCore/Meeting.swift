@@ -96,6 +96,11 @@ public func labelSpeakers(_ lines: [TranscriptLine], turns: [SpeakerTurn]) -> [T
     }
 }
 
+/// Meetings a quit, crash or update left mid-recording or mid-transcription, other than `current`.
+public func unfinishedMeetings(_ meetings: [Meeting], except current: String?) -> [Meeting] {
+    meetings.filter { ($0.status == .recording || $0.status == .transcribing) && $0.id != current }
+}
+
 /// Interleaves your lines and the others' lines by time.
 public func mergeTranscripts(you: [TranscriptLine], others: [TranscriptLine]) -> [TranscriptLine] {
     (you + others).sorted { $0.start < $1.start }
@@ -126,6 +131,21 @@ public struct MeetingStore: Sendable {
         let dir = folder(for: meeting.id)
         try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
         try Self.encoder.encode(meeting).write(to: dir.appendingPathComponent("meeting.json"), options: .atomic)
+    }
+
+    /// One meeting as saved, or nil.
+    public func load(_ id: String) -> Meeting? {
+        (try? Data(contentsOf: folder(for: id).appendingPathComponent("meeting.json"))).flatMap { try? Self.decoder.decode(Meeting.self, from: $0) }
+    }
+
+    /// Changes only what `change` touches on the saved meeting, so work finishing at different
+    /// times (calendar lookup, transcription, summary) never overwrites each other's results.
+    @discardableResult
+    public func update(_ id: String, _ change: (inout Meeting) -> Void) throws -> Meeting? {
+        guard var meeting = load(id) else { return nil }
+        change(&meeting)
+        try save(meeting)
+        return meeting
     }
 
     /// All meetings, newest first.

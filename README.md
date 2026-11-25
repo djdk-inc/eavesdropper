@@ -12,7 +12,8 @@ Menu bar app that notices when you're in a Zoom or Google Meet call, records it 
   - Zoom app: Zoom is using audio (it only does so in a meeting).
   - Meet or Zoom in a browser (Chrome, Arc, Edge, Brave, Safari): the browser is using audio and has a meeting tab open (`meet.google.com/abc-defg-hij`, `zoom.us/wc/<id>`).
   - Starts after ~4 s, ends ~3 s after audio stops.
-- **Records**: `mic.m4a` (your mic) and `call.m4a` (only the meeting app's sound, not music or notifications).
+- **Records**: your mic and the meeting app's sound (not music or notifications), written as uncompressed `mic.caf` / `call.caf`, which survive a crash or forced quit. They're compressed to `mic.m4a` / `call.m4a` after transcription.
+- **Never loses a call**: quitting, updating or logging out mid-call saves the meeting, and the next launch finishes any interrupted recording or transcription.
 - **Transcribes** on-device after the call (Apple SpeechTranscriber). Your mic is labeled `You`; the call's audio is split by voice into `Speaker 1`, `Speaker 2`, … (on-device speaker diarization). The diarizer code and model live in this repo (`Vendor/FluidAudio`, `Models/`), so nothing is fetched at build time or run time.
 - **Titles** the meeting after its Google Calendar invite, matched by Meet code or Zoom meeting ID, falling back to an event happening now. Copies time, organizer, attendees, location, description and link. If the calendar can't be read, the title is the start time.
 - **Start Listening** (menu bar spy → Start Listening, or ⌘L in the menu) records your mic and everything the Mac plays, from any app, until you click **Stop Listening**. It's then transcribed, speaker-labelled and saved like a detected call ("Manual recording – <time>"). Call detection pauses while it runs.

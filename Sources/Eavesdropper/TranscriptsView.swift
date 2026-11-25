@@ -25,9 +25,8 @@ final class MeetingList: ObservableObject {
         summaryErrors[meeting.id] = nil
         Task {
             do {
-                var updated = store.all().first(where: { $0.id == meeting.id }) ?? meeting
-                updated.summary = try await Eavesdropper.summarize(updated)
-                try store.save(updated)
+                let summary = try await Eavesdropper.summarize(store.load(meeting.id) ?? meeting)
+                try store.update(meeting.id) { $0.summary = summary }
             } catch {
                 summaryErrors[meeting.id] = "\(error)"
             }
