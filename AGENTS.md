@@ -40,6 +40,7 @@ Two processes with one-way data flow:
 - **Local first.** The build-and-debug loop runs on fixtures with no network and no cost. Core logic gets a check in `DetectorChecks` before it ships.
 - **Branches and worktrees.** Work happens on a branch in its own git worktree, never in the main checkout. Finished work goes to `main` through a squash-merged PR, merged as soon as it's verified (no need to ask).
 - **No new dependencies.** `Package.swift` has no external packages, and nothing is fetched at build time or run time. Outside code is vendored with its license and a NOTICE of changes; models live in `Models/` with provenance.
+- **Crash safety.** Audio is recorded as uncompressed CAF, which stays readable after a hard kill; `.m4a` doesn't. It's compressed to `.m4a` after transcription. SIGTERM, SIGINT and Quit save the meeting as `transcribing`, and launch recovers every `recording`/`transcribing` meeting (`recoverUnfinished`). Background work changes meetings only through `MeetingStore.update`, one field at a time, never by saving a stale copy.
 - **Don't rebuild over a running app.** Replacing the bundle under a running process invalidates its signature, and macOS then hands it silent audio. Quit the app first. Each ad-hoc-signed build counts as a new app, so macOS asks for Microphone, System Audio Recording and browser automation again.
 
 ## Commands
@@ -61,6 +62,7 @@ Diagnostic modes on the built binary (`Eavesdropper.app/Contents/MacOS/Eavesdrop
 | `--calendar [meeting URL]` | Runs the helper and shows which invite would match |
 | `--transcribe - [--speakers] < file.m4a` | The transcript of audio on stdin (the sandbox can't open arbitrary paths) |
 | `--listen-for <seconds>` | What Start Listening does, headless: records all system audio plus the mic, then transcribes and saves |
+| `--recover` | Finishes interrupted meetings (what launch does) and prints the outcome |
 | `--summarize < meeting.json` | On-device notes for a saved meeting |
 | `--render [meeting id] > page.png` | A PNG of a meeting's page as the window shows it (layout checks, README screenshot) |
 | `--network-selftest` | Must report both targets blocked |

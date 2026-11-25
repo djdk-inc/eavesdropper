@@ -13,18 +13,22 @@ private func check(_ status: OSStatus, _ step: String) throws {
     guard status == noErr else { throw RecorderError.coreAudio(step, status) }
 }
 
-/// AAC file settings matching `format`, so buffers can be written as they arrive.
-private func aacFile(_ url: URL, _ format: AVAudioFormat) throws -> AVAudioFile {
+/// An uncompressed CAF file matching `format`. Unlike .m4a, CAF stays readable if the app is killed
+/// mid-recording (a measured hard kill kept 2.8 of 3 s), so a crash or update never loses a call.
+/// It's compressed to .m4a after transcription (compressRecording).
+private func crashSafeFile(_ url: URL, _ format: AVAudioFormat) throws -> AVAudioFile {
     try AVAudioFile(
         forWriting: url,
-        settings: [AVFormatIDKey: kAudioFormatMPEG4AAC, AVSampleRateKey: format.sampleRate, AVNumberOfChannelsKey: min(format.channelCount, 2)],
+        settings: [AVFormatIDKey: kAudioFormatLinearPCM, AVSampleRateKey: format.sampleRate,
+                   AVNumberOfChannelsKey: min(format.channelCount, 2),
+                   AVLinearPCMBitDepthKey: 16, AVLinearPCMIsFloatKey: false],
         commonFormat: format.commonFormat,
         interleaved: format.isInterleaved
     )
 }
 
-/// Records one call into a folder: `mic.m4a` (your microphone) and `call.m4a`
-/// (only the meeting app's sound, via a Core Audio process tap).
+/// Records one call into a folder: `mic.caf` (your microphone) and `call.caf`
+/// (the meeting app's sound, or everything the Mac plays for a manual recording).
 final class CallRecorder {
     let folder: URL
     private let engine = AVAudioEngine()
@@ -53,7 +57,7 @@ final class CallRecorder {
     private func startMic() throws {
         let input = engine.inputNode
         let format = input.outputFormat(forBus: 0)
-        let file = try aacFile(folder.appendingPathComponent("mic.m4a"), format)
+        let file = try crashSafeFile(folder.appendingPathComponent("mic.caf"), format)
         micFile = file
         input.installTap(onBus: 0, bufferSize: 4096, format: format) { buffer, _ in
             do { try file.write(from: buffer) } catch { log("mic write: \(error)") }
@@ -93,7 +97,7 @@ final class CallRecorder {
         ]
         try check(AudioHardwareCreateAggregateDevice(aggregate as CFDictionary, &aggregateID), "create aggregate device")
 
-        let file = try aacFile(folder.appendingPathComponent("call.m4a"), format)
+        let file = try crashSafeFile(folder.appendingPathComponent("call.caf"), format)
         callFile = file
         try check(AudioDeviceCreateIOProcIDWithBlock(&ioProcID, aggregateID, queue) { _, input, _, _, _ in
             guard let buffer = AVAudioPCMBuffer(pcmFormat: format, bufferListNoCopy: input, deallocator: nil) else { return }

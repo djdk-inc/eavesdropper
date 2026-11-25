@@ -198,6 +198,13 @@ expect(noteBlocks("## Summary\nShip Wednesday.\n\n## Action items\n- Karen: fix\
        [.line("Ship Wednesday."), .heading("Action items"), .line("• Karen: fix"), .heading("Extra")],
        "headings parsed, leading Summary heading dropped, blanks skipped")
 
+// Interrupted meetings to recover
+var rec = Meeting(id: "a", app: .meet, startedAt: at("2026-11-25T18:00:00Z"), meetingURL: nil)
+var tra = rec; tra.id = "b"; tra.status = .transcribing
+var don = rec; don.id = "c"; don.status = .done
+var cur = rec; cur.id = "d"
+expect(unfinishedMeetings([rec, tra, don, cur], except: "d").map(\.id) == ["a", "b"], "recover recording/transcribing meetings, not done or the current one")
+
 // Store round trip
 let dir = FileManager.default.temporaryDirectory.appendingPathComponent("eavesdropper-checks-\(UUID().uuidString)")
 let s2 = MeetingStore(root: dir)
@@ -205,6 +212,15 @@ m.transcript = merged
 m.summary = Summary(text: "## Summary\nShip Wednesday.", createdAt: at("2026-11-25T19:00:00Z"))
 try! s2.save(m)
 expect(s2.all().first?.event == review && s2.all().first?.transcript == merged && s2.all().first?.summary == m.summary, "meeting.json round trip (incl. summary)")
+// Field updates don't clobber each other (the bug that left meetings stuck "recording")
+let racing = Meeting(id: "race", app: .meet, startedAt: at("2026-11-25T18:00:00Z"), meetingURL: nil)
+try! s2.save(racing)
+try! s2.update("race") { $0.status = .done; $0.transcript = merged }   // transcription finishes first
+try! s2.update("race") { $0.event = review }                           // calendar lookup lands later
+expect(s2.load("race")?.status == .done && s2.load("race")?.transcript == merged && s2.load("race")?.event == review,
+       "late calendar update keeps the finished transcript and status")
+let missingUpdate = try? s2.update("missing") { $0.status = .done }
+expect(s2.load("missing") == nil && missingUpdate == nil, "updating a missing meeting is a no-op")
 try? FileManager.default.removeItem(at: dir)
 
 print(failures == 0 ? "all checks passed" : "\(failures) failed")
