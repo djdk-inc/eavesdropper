@@ -161,6 +161,19 @@ expect(labeled.map(\.speaker) == ["Speaker 1", "Speaker 2", "Speaker 1", "Speake
 expect(labelSpeakers(callLines, turns: []) == callLines, "no turns → lines unchanged")
 expect(labeled.map(\.text) == callLines.map(\.text), "text untouched")
 
+// Calendar snapshot hand-off
+let snapNow = at("2026-11-25T18:00:00Z")
+var farOneOff = CalendarEvent(); farOneOff.title = "Old one-off"; farOneOff.start = at("2026-10-01T18:00:00Z"); farOneOff.end = at("2026-10-01T19:00:00Z")
+var cancelled = review; cancelled.status = "CANCELLED"
+let relevant = CalendarSnapshot.relevant(events + [farOneOff, cancelled], around: snapNow)
+expect(relevant.map(\.title).contains("Weekly sync"), "snapshot keeps recurring series")
+expect(relevant.map(\.title).contains("Coffee chat"), "snapshot keeps one-offs within two days")
+expect(!relevant.map(\.title).contains("Old one-off"), "snapshot drops old one-offs")
+expect(relevant.filter { $0.status == "CANCELLED" }.isEmpty, "snapshot drops cancelled events")
+let snap = CalendarSnapshot(fetchedAt: snapNow, events: relevant)
+expect((try? CalendarSnapshot.decode(snap.encoded())) == snap, "snapshot JSON round trip")
+expect(calendarSnapshotURL.path.hasSuffix("Library/Application Support/Eavesdropper Calendar/calendar.json"), "snapshot path under real home")
+
 // Store round trip
 let dir = FileManager.default.temporaryDirectory.appendingPathComponent("eavesdropper-checks-\(UUID().uuidString)")
 let s2 = MeetingStore(root: dir)

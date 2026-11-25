@@ -6,7 +6,10 @@ let package = Package(
     platforms: [.macOS("26.0")],
     targets: [
         .target(name: "EavesdropperCore"),
+        // The recorder: runs in the App Sandbox with no network access (Eavesdropper.entitlements).
         .executableTarget(name: "Eavesdropper", dependencies: ["EavesdropperCore", "FluidAudio"]),
+        // The calendar helper: the only networked part; handles invite metadata only.
+        .executableTarget(name: "EavesdropperCalendar", dependencies: ["EavesdropperCore"]),
         .executableTarget(name: "DetectorChecks", dependencies: ["EavesdropperCore"]),
 
         // Speaker diarization, copied from FluidAudio v0.18.4 (Apache-2.0; see Vendor/FluidAudio/NOTICE).

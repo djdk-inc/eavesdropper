@@ -16,30 +16,25 @@ Menu bar app that notices when you're in a Zoom or Google Meet call, records it 
 - **Copy Transcript** button puts the whole transcript on the clipboard as `[mm:ss] Speaker: text` lines.
 - **Shows** everything in the Transcripts window (menu bar spy icon → Show Transcripts; a dot by its hat means a call is being recorded).
 
-Meetings are saved in `~/Recordings/Eavesdropper/<start> <app>/` as `meeting.json` plus the two audio files.
+## Privacy and isolation
 
-Calendar: the app reads `GOOGLE_CALENDAR_ICS_URL` (Google's private iCal address) from Secret Manager in `djdk-inc` using your `gcloud` login. Nothing is stored on disk.
+- **The recorder can't use the network.** `Eavesdropper.app` runs in the macOS App Sandbox with no network entitlement, so audio and transcripts can't leave the Mac. `./verify.sh` checks both the entitlements and a live connection attempt.
+- **Only calendar metadata uses the network.** A separate helper, `Eavesdropper Calendar.app` (inside the app bundle), fetches your Google Calendar through the private iCal address (`GOOGLE_CALENDAR_ICS_URL` in Secret Manager, read with your `gcloud` login). It hands the recorder invite metadata through a read-only file, and never receives meeting data.
+- **Meetings stay in the app's container**: `~/Library/Containers/com.djdk.eavesdropper/Data/Recordings/Eavesdropper/<start> <app>/`, holding `meeting.json`, `mic.m4a` and `call.m4a`.
 
 ## Build and run
 
-Needs macOS 26+ and the Xcode Command Line Tools.
+Needs macOS 26+ and the Xcode Command Line Tools (Swift version pinned in `.swift-toolchain`).
 
 ```bash
-./build-app.sh
+./build-app.sh        # hermetic: no network during the build; version stamped from VERSION + git
+./verify.sh           # logic + isolation checks
 open Eavesdropper.app
 ```
 
-The first call triggers three macOS prompts: Microphone, System Audio Recording, and control of your browser (to read tab URLs). Allow all three.
+Each new build counts as a new app to macOS, which then asks for Microphone, System Audio Recording, and control of your browser (to read tab URLs). Allow all three. Quit the running app before rebuilding.
 
-## Checks
-
-```bash
-swift run --build-system native --scratch-path .build2 DetectorChecks   # detection, calendar parsing/matching, titles, storage
-Eavesdropper.app/Contents/MacOS/Eavesdropper --probe                     # what the detector sees right now
-Eavesdropper.app/Contents/MacOS/Eavesdropper --calendar <meeting URL>    # which invite a call at that URL would get
-Eavesdropper.app/Contents/MacOS/Eavesdropper --transcribe <audio file>   # on-device transcript of a file
-Eavesdropper.app/Contents/MacOS/Eavesdropper --record <pid> <sec> <dir>  # record one process + mic
-```
+Releases: `./release.sh` (see [AGENTS.md](AGENTS.md)). Every release is reproducible: `./verify-reproducible.sh` rebuilds twice and checks the results are byte-identical.
 
 ## Known limits
 

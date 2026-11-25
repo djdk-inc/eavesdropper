@@ -1,3 +1,4 @@
 .build*/
-Eavesdropper.app/
+*.app/
 .models/
+dist/
