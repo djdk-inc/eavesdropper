@@ -1,6 +1,7 @@
 import AppKit
 import AVFoundation
 import EavesdropperCore
+import FluidAudio
 import SwiftUI
 
 func log(_ message: String) {
@@ -33,7 +34,7 @@ func transcribeMeeting(_ meeting: Meeting) async -> Meeting {
     let folder = store.folder(for: meeting.id)
     do {
         async let you = transcribe(folder.appendingPathComponent("mic.m4a"), speaker: "You")
-        async let others = transcribe(folder.appendingPathComponent("call.m4a"), speaker: "Others")
+        async let others = transcribeCall(folder.appendingPathComponent("call.m4a"))
         meeting.transcript = mergeTranscripts(you: try await you, others: try await others)
         meeting.status = .done
     } catch {
@@ -63,13 +64,18 @@ if args.contains("--probe") {
     exit(0)
 }
 
-/// `--transcribe <audio file>`: print the on-device transcript of a file.
+/// `--transcribe <audio file> [--speakers]`: print the on-device transcript of a file,
+/// labeled by voice with `--speakers` (as the call side of a meeting is).
 if let i = args.firstIndex(of: "--transcribe"), i + 1 < args.count {
     Task {
         do {
-            for line in try await transcribe(URL(fileURLWithPath: args[i + 1]), speaker: "Speaker") {
-                print(String(format: "[%6.1fs] ", line.start) + line.text)
+            let file = URL(fileURLWithPath: args[i + 1])
+            guard FileManager.default.fileExists(atPath: file.path) else {
+                print("file not found: \(file.path)")
+                exit(1)
             }
+            let lines = args.contains("--speakers") ? try await transcribeCall(file) : try await transcribe(file, speaker: "Speaker")
+            print(transcriptText(lines))
             exit(0)
         } catch {
             print("transcription failed: \(error)")

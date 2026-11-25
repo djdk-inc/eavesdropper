@@ -1,0 +1,13 @@
+This directory contains code from FluidAudio v0.18.4 (commit e0c6103b)
+https://github.com/FluidInference/FluidAudio
+Copyright Fluid Inference. Licensed under the Apache License 2.0 (see LICENSE).
+
+Modified for Eavesdropper:
+- Kept only the offline speaker diarizer and the shared code it needs; removed
+  speech recognition, text-to-speech, VAD and the online diarizer.
+- Removed all model-download code (Shared/Download, ModelRegistry,
+  AssetDownloader); models load only from a local folder
+  (OfflineDiarizerModels.loadLocalModels).
+- ModelNames.swift trimmed to the offline diarizer's file names.
+- BlasIndex.swift moved from ASR/ to Shared/Math/ and its error type changed.
+- Added Shared/ProgressHandler.swift (stand-in type for the removed downloader).

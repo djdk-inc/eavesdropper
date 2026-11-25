@@ -145,6 +145,22 @@ expect(transcriptText(merged) == "[00:01] You: hi\n[00:04] Others: hello\n[00:09
 expect(transcriptText([TranscriptLine(start: 3725, speaker: "Others", text: "late")]) == "[1:02:05] Others: late", "copy text past the hour")
 expect(transcriptText([]) == "", "empty transcript copies nothing")
 
+// Speaker labels on the call's lines
+let callLines = [
+    TranscriptLine(start: 0, end: 2.5, speaker: "Others", text: "can we ship monday"),
+    TranscriptLine(start: 3, end: 5, speaker: "Others", text: "not without the fix"),
+    TranscriptLine(start: 5.5, end: 8, speaker: "Others", text: "then tuesday"),
+    TranscriptLine(start: 20, end: 21, speaker: "Others", text: "ok"),
+]
+let turns = [SpeakerTurn(start: 0.1, end: 2.6, voice: "S2"), SpeakerTurn(start: 2.9, end: 5.2, voice: "S1"),
+             SpeakerTurn(start: 5.4, end: 6.0, voice: "S1"), SpeakerTurn(start: 6.0, end: 8.0, voice: "S2"),
+             SpeakerTurn(start: 18, end: 19, voice: "S1")]
+let labeled = labelSpeakers(callLines, turns: turns)
+expect(labeled.map(\.speaker) == ["Speaker 1", "Speaker 2", "Speaker 1", "Speaker 2"],
+       "voices numbered by first appearance; most-overlap wins; no overlap → nearest turn (\(labeled.map(\.speaker)))")
+expect(labelSpeakers(callLines, turns: []) == callLines, "no turns → lines unchanged")
+expect(labeled.map(\.text) == callLines.map(\.text), "text untouched")
+
 // Store round trip
 let dir = FileManager.default.temporaryDirectory.appendingPathComponent("eavesdropper-checks-\(UUID().uuidString)")
 let s2 = MeetingStore(root: dir)

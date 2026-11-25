@@ -3,12 +3,15 @@ import Foundation
 public struct TranscriptLine: Codable, Equatable, Sendable {
     /// Seconds from the start of the recording.
     public var start: TimeInterval
-    /// "You" (your mic) or "Others" (the call's sound).
+    /// When the line's speech ends (nil in meetings saved before speaker labels).
+    public var end: TimeInterval?
+    /// "You" (your mic), "Speaker N" (a voice on the call), or "Others" (the call, unsplit).
     public var speaker: String
     public var text: String
 
-    public init(start: TimeInterval, speaker: String, text: String) {
+    public init(start: TimeInterval, end: TimeInterval? = nil, speaker: String, text: String) {
         self.start = start
+        self.end = end
         self.speaker = speaker
         self.text = text
     }
@@ -52,6 +55,42 @@ public func transcriptText(_ transcript: [TranscriptLine]) -> String {
         let stamp = t >= 3600 ? String(format: "%d:%02d:%02d", t / 3600, t / 60 % 60, t % 60) : String(format: "%02d:%02d", t / 60, t % 60)
         return "[\(stamp)] \(line.speaker): \(line.text)"
     }.joined(separator: "\n")
+}
+
+/// A stretch of the call audio where one voice is talking, from the diarizer.
+public struct SpeakerTurn: Equatable, Sendable {
+    public var start: TimeInterval
+    public var end: TimeInterval
+    /// The diarizer's id for the voice; only equality matters.
+    public var voice: String
+
+    public init(start: TimeInterval, end: TimeInterval, voice: String) {
+        self.start = start
+        self.end = end
+        self.voice = voice
+    }
+}
+
+/// Relabels the call's lines by voice: each line goes to the voice that talks most during it
+/// (or the nearest turn, when none overlaps). Voices are numbered Speaker 1, 2, … in order of
+/// first appearance. With no turns, lines keep their label.
+public func labelSpeakers(_ lines: [TranscriptLine], turns: [SpeakerTurn]) -> [TranscriptLine] {
+    guard !turns.isEmpty else { return lines }
+    var numbers = [String: Int]()
+    return lines.map { line in
+        let end = max(line.end ?? line.start + 1, line.start)
+        let overlap = { (t: SpeakerTurn) in max(0, min(end, t.end) - max(line.start, t.start)) }
+        let distance = { (t: SpeakerTurn) in t.end < line.start ? line.start - t.end : max(0, t.start - end) }
+        var talk = [String: TimeInterval]()
+        for t in turns { talk[t.voice, default: 0] += overlap(t) }
+        let voice = talk.filter { $0.value > 0 }.max { $0.value < $1.value || ($0.value == $1.value && $0.key > $1.key) }?.key
+            ?? turns.min { distance($0) < distance($1) }!.voice
+        let number = numbers[voice] ?? (numbers.count + 1)
+        numbers[voice] = number
+        var labeled = line
+        labeled.speaker = "Speaker \(number)"
+        return labeled
+    }
 }
 
 /// Interleaves your lines and the others' lines by time.
