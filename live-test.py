@@ -124,12 +124,14 @@ def check(folder, spoken, voices):
         if recall < 0.8:
             problems.append(f"call side heard only {recall:.0%} of the spoken words")
     # Without headphones the mic hears the speakers: each "You" line echoes a call line (the nearest one
-    # with the same words; the meeting is played twice). Their offsets measure how well the sides line up.
+    # with the same words within 10 s: the meeting is played twice, and a line one side splits differently
+    # would otherwise pair with its copy a playback away). Their offsets measure how well the sides line up.
     offsets = []
     for you in (t for t in lines if t["speaker"] == "You"):
-        same = [t["start"] for t in call if words(t["text"]) == words(you["text"])]
-        if same:
-            offsets.append(you["start"] - min(same, key=lambda s: abs(s - you["start"])))
+        near = [t["start"] - you["start"] for t in call if words(t["text"]) == words(you["text"])
+                and abs(t["start"] - you["start"]) < 10]
+        if near:
+            offsets.append(-min(near, key=abs))
     if offsets:
         worst = max(offsets, key=abs)
         print(f"  echo offset: median {statistics.median(offsets):.2f} s, worst {worst:.2f} s ({len(offsets)} pairs)")
