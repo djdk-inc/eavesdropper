@@ -66,6 +66,7 @@ Diagnostic modes on the built binary (`Eavesdropper.app/Contents/MacOS/Eavesdrop
 | `--summarize < meeting.json` | On-device notes for a saved meeting |
 | `--render [meeting id] > page.png` | A PNG of a meeting's page as the window shows it (layout checks, README screenshot) |
 | `--network-selftest` | Must report both targets blocked |
+| `--control start\|stop` | Tells the running app to Start or Stop Listening, exactly as the menu item does (local distributed notification; web pages can't send one) |
 
 ## Resources
 
@@ -78,6 +79,7 @@ Diagnostic modes on the built binary (`Eavesdropper.app/Contents/MacOS/Eavesdrop
 | Summaries | macOS's built-in on-device model (`FoundationModels`, `SystemLanguageModel.default`): nothing to bundle, no network, works in the sandbox. It reads about 4,096 tokens at once, so transcripts are condensed in ~6,000-character parts first (`transcriptChunks`). Requests run one at a time, since parallel requests measured no faster |
 | Test speech | macOS `say` voices, e.g. Samantha, Daniel and Karen mixed into one file for a 3-speaker conversation |
 | Live end-to-end test | Open a Meet room tab in Chrome (Meet's pre-join screen counts as a call) and play the test conversation in another Chrome tab. The app should record, transcribe and label it. The mic also records the room |
+| Live manual-recording test | `./live-test.py <conversation audio> [--rounds N]` drives the installed app through `--control`, plays the audio twice with a silent gap, and passes when the meeting is done, both recordings match its length, and the two sides line up within 2 s. Run from Terminal or another app holding System Audio Recording, not from a process TCC attributes elsewhere |
 
 ## Shipping
 

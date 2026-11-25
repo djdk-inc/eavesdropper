@@ -223,5 +223,13 @@ let missingUpdate = try? s2.update("missing") { $0.status = .done }
 expect(s2.load("missing") == nil && missingUpdate == nil, "updating a missing meeting is a no-op")
 try? FileManager.default.removeItem(at: dir)
 
+// Recording timeline: gaps the audio device skipped become silence, so the file keeps wall-clock time
+expect(silenceToInsert(written: 48_000, elapsed: 1.0, sampleRate: 48_000) == 0, "no gap, no silence")
+expect(silenceToInsert(written: 47_000, elapsed: 1.0, sampleRate: 48_000) == 0, "jitter under 50 ms is ignored")
+expect(silenceToInsert(written: 48_000, elapsed: 15.0, sampleRate: 48_000) == 14 * 48_000, "a 14 s skip is filled")
+expect(silenceToInsert(written: 96_000, elapsed: 1.0, sampleRate: 48_000) == 0, "ahead of the clock: never trims")
+expect(silenceToInsert(written: 0, elapsed: 3600, sampleRate: 48_000) == 60 * 48_000, "one gap is capped at 60 s")
+expect(silenceToInsert(written: 0, elapsed: 0.5, sampleRate: 48_000) == 24_000, "late first buffer gets leading silence")
+
 print(failures == 0 ? "all checks passed" : "\(failures) failed")
 exit(failures == 0 ? 0 : 1)
