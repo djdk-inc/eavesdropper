@@ -27,13 +27,57 @@ private func crashSafeFile(_ url: URL, _ format: AVAudioFormat) throws -> AVAudi
     )
 }
 
+/// An audio file kept on the wall clock: each buffer's host time says where it belongs, and frames the
+/// device skipped are written as silence (silenceToInsert). Used from one audio thread at a time.
+final class TimelineFile {
+    private let file: AVAudioFile
+    private let origin: UInt64
+    private var written: Int64 = 0
+    private(set) var silence: Int64 = 0
+
+    init(_ file: AVAudioFile, origin: UInt64) {
+        self.file = file
+        self.origin = origin
+    }
+
+    var sampleRate: Double { file.processingFormat.sampleRate }
+
+    func write(_ buffer: AVAudioPCMBuffer, hostTime: UInt64?) throws {
+        if let hostTime, hostTime > origin {
+            let elapsed = Double(AudioConvertHostTimeToNanos(hostTime - origin)) / 1e9
+            let gap = silenceToInsert(written: written, elapsed: elapsed, sampleRate: sampleRate)
+            if gap > 0 { try writeSilence(gap) }
+        }
+        try file.write(from: buffer)
+        written += Int64(buffer.frameLength)
+    }
+
+    private func writeSilence(_ frames: Int64) throws {
+        let chunk = AVAudioFrameCount(sampleRate) // one second at a time
+        guard let buffer = AVAudioPCMBuffer(pcmFormat: file.processingFormat, frameCapacity: chunk) else { return }
+        var left = frames
+        while left > 0 {
+            buffer.frameLength = AVAudioFrameCount(min(Int64(chunk), left))
+            for channel in UnsafeMutableAudioBufferListPointer(buffer.mutableAudioBufferList) {
+                if let data = channel.mData { memset(data, 0, Int(channel.mDataByteSize)) }
+            }
+            try file.write(from: buffer)
+            left -= Int64(buffer.frameLength)
+        }
+        written += frames
+        silence += frames
+    }
+}
+
 /// Records one call into a folder: `mic.caf` (your microphone) and `call.caf`
 /// (the meeting app's sound, or everything the Mac plays for a manual recording).
+/// Both files start at the same moment and stay on the wall clock, so the two sides line up.
 final class CallRecorder {
     let folder: URL
     private let engine = AVAudioEngine()
-    private var micFile: AVAudioFile?
-    private var callFile: AVAudioFile?
+    private let origin = AudioGetCurrentHostTime()
+    private var micFile: TimelineFile?
+    private var callFile: TimelineFile?
     private var tapID = AudioObjectID(kAudioObjectUnknown)
     private var aggregateID = AudioObjectID(kAudioObjectUnknown)
     private var ioProcID: AudioDeviceIOProcID?
@@ -57,10 +101,10 @@ final class CallRecorder {
     private func startMic() throws {
         let input = engine.inputNode
         let format = input.outputFormat(forBus: 0)
-        let file = try crashSafeFile(folder.appendingPathComponent("mic.caf"), format)
+        let file = TimelineFile(try crashSafeFile(folder.appendingPathComponent("mic.caf"), format), origin: origin)
         micFile = file
-        input.installTap(onBus: 0, bufferSize: 4096, format: format) { buffer, _ in
-            do { try file.write(from: buffer) } catch { log("mic write: \(error)") }
+        input.installTap(onBus: 0, bufferSize: 4096, format: format) { buffer, when in
+            do { try file.write(buffer, hostTime: when.isHostTimeValid ? when.hostTime : nil) } catch { log("mic write: \(error)") }
         }
         try engine.start()
     }
@@ -97,11 +141,13 @@ final class CallRecorder {
         ]
         try check(AudioHardwareCreateAggregateDevice(aggregate as CFDictionary, &aggregateID), "create aggregate device")
 
-        let file = try crashSafeFile(folder.appendingPathComponent("call.caf"), format)
+        let file = TimelineFile(try crashSafeFile(folder.appendingPathComponent("call.caf"), format), origin: origin)
         callFile = file
-        try check(AudioDeviceCreateIOProcIDWithBlock(&ioProcID, aggregateID, queue) { _, input, _, _, _ in
+        try check(AudioDeviceCreateIOProcIDWithBlock(&ioProcID, aggregateID, queue) { _, input, inputTime, _, _ in
             guard let buffer = AVAudioPCMBuffer(pcmFormat: format, bufferListNoCopy: input, deallocator: nil) else { return }
-            do { try file.write(from: buffer) } catch { log("call write: \(error)") }
+            let time = inputTime.pointee
+            let hostTime = time.mFlags.contains(.hostTimeValid) ? time.mHostTime : nil
+            do { try file.write(buffer, hostTime: hostTime) } catch { log("call write: \(error)") }
         }, "create IO proc")
         try check(AudioDeviceStart(aggregateID, ioProcID), "start aggregate device")
     }
@@ -116,6 +162,9 @@ final class CallRecorder {
         queue.sync {} // drain pending writes before closing the file
         if aggregateID != kAudioObjectUnknown { AudioHardwareDestroyAggregateDevice(aggregateID) }
         if tapID != kAudioObjectUnknown { AudioHardwareDestroyProcessTap(tapID) }
+        for (name, file) in [("mic", micFile), ("call", callFile)] {
+            if let file, file.silence > 0 { log("\(name): filled \(String(format: "%.1f", Double(file.silence) / file.sampleRate)) s the device skipped") }
+        }
         micFile = nil // AVAudioFile finalizes on release
         callFile = nil
     }

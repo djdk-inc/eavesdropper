@@ -196,6 +196,19 @@ if let i = args.firstIndex(of: "--render") {
     }
 }
 
+/// Local control of the running app, for scripted tests: the same Start/Stop Listening as the menu.
+/// Distributed notifications reach only processes on this Mac (a web page can't send one, unlike a URL scheme).
+let startListeningNotification = Notification.Name("com.djdk.eavesdropper.start-listening")
+let stopListeningNotification = Notification.Name("com.djdk.eavesdropper.stop-listening")
+
+/// `--control start|stop`: tell the running app to start or stop listening, as the menu item does.
+if let i = args.firstIndex(of: "--control"), i + 1 < args.count {
+    let names = ["start": startListeningNotification, "stop": stopListeningNotification]
+    guard let name = names[args[i + 1]] else { print("usage: --control start|stop"); exit(2) }
+    DistributedNotificationCenter.default().postNotificationName(name, object: nil, userInfo: nil, deliverImmediately: true)
+    exit(0)
+}
+
 /// `--listen-for <seconds>`: what Start Listening does, headless: record everything the Mac plays plus
 /// the mic for that long, then transcribe, save the meeting, and print its id and transcript.
 if let i = args.firstIndex(of: "--listen-for"), i + 1 < args.count, let seconds = Double(args[i + 1]) {
@@ -287,6 +300,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             source.setEventHandler { MainActor.assumeIsolated { self.finishForQuit() }; exit(0) }
             source.resume()
             terminationSignals.append(source)
+        }
+        let control = DistributedNotificationCenter.default()
+        control.addObserver(forName: startListeningNotification, object: nil, queue: .main) { _ in
+            MainActor.assumeIsolated { if !self.manual { self.toggleListening() } }
+        }
+        control.addObserver(forName: stopListeningNotification, object: nil, queue: .main) { _ in
+            MainActor.assumeIsolated { if self.manual { self.toggleListening() } }
         }
         Task { await recoverUnfinished(except: nil); list.reload() }
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in Task { @MainActor in self.poll() } }
