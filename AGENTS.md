@@ -60,6 +60,7 @@ Diagnostic modes on the built binary (`Eavesdropper.app/Contents/MacOS/Eavesdrop
 | `--probe` | What call detection sees right now |
 | `--calendar [meeting URL]` | Runs the helper and shows which invite would match |
 | `--transcribe - [--speakers] < file.m4a` | The transcript of audio on stdin (the sandbox can't open arbitrary paths) |
+| `--summarize < meeting.json` | On-device notes for a saved meeting |
 | `--network-selftest` | Must report both targets blocked |
 
 ## Resources
@@ -70,6 +71,7 @@ Diagnostic modes on the built binary (`Eavesdropper.app/Contents/MacOS/Eavesdrop
 | Calendar feed | `GOOGLE_CALENDAR_ICS_URL` in GCP Secret Manager (project `djdk-inc`), read by the helper through the user's `gcloud` login. Never stored or committed |
 | Diarization code | FluidAudio v0.18.4 (commit `e0c6103b`), Apache-2.0. To update: copy the same subset from a new upstream tag and re-apply the changes listed in `Vendor/FluidAudio/NOTICE` |
 | Diarization model | `FluidInference/speaker-diarization-coreml` (Hugging Face), snapshot `1ed7a66`. Converted from `pyannote/speaker-diarization-community-1`, CC-BY-4.0. File hashes are in `Models/speaker-diarization/provenance.json` |
+| Summaries | macOS's built-in on-device model (`FoundationModels`, `SystemLanguageModel.default`): nothing to bundle, no network, works in the sandbox. It reads about 4,096 tokens at once, so transcripts are condensed in ~6,000-character parts first (`transcriptChunks`). Requests run one at a time, since parallel requests measured no faster |
 | Test speech | macOS `say` voices, e.g. Samantha, Daniel and Karen mixed into one file for a 3-speaker conversation |
 | Live end-to-end test | Open a Meet room tab in Chrome (Meet's pre-join screen counts as a call) and play the test conversation in another Chrome tab. The app should record, transcribe and label it. The mic also records the room |
 

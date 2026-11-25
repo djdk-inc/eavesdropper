@@ -8,6 +8,9 @@ final class MeetingList: ObservableObject {
     @Published var selection: Meeting.ID?
     /// The meeting whose transcript was just copied, for brief "Copied" feedback.
     @Published var copied: Meeting.ID?
+    /// Meetings being summarized right now, and the last error per meeting.
+    @Published var summarizing: Set<Meeting.ID> = []
+    @Published var summaryErrors: [Meeting.ID: String] = [:]
     let store: MeetingStore
 
     init(store: MeetingStore) {
@@ -16,6 +19,22 @@ final class MeetingList: ObservableObject {
     }
 
     func reload() { meetings = store.all() }
+
+    func summarize(_ meeting: Meeting) {
+        summarizing.insert(meeting.id)
+        summaryErrors[meeting.id] = nil
+        Task {
+            do {
+                var updated = store.all().first(where: { $0.id == meeting.id }) ?? meeting
+                updated.summary = try await Eavesdropper.summarize(updated)
+                try store.save(updated)
+            } catch {
+                summaryErrors[meeting.id] = "\(error)"
+            }
+            summarizing.remove(meeting.id)
+            reload()
+        }
+    }
 
     func copyTranscript(of meeting: Meeting) {
         NSPasteboard.general.clearContents()
@@ -68,10 +87,39 @@ struct MeetingDetail: View {
                 }
                 metadata
                 Divider()
+                summary
+                Divider()
                 transcript
             }
             .padding(20)
             .frame(maxWidth: .infinity, alignment: .leading)
+        }
+    }
+
+    @ViewBuilder
+    private var summary: some View {
+        let busy = list.summarizing.contains(meeting.id)
+        HStack {
+            Text("Summary").font(.headline)
+            Spacer()
+            if busy {
+                ProgressView().controlSize(.small)
+                Text("Summarizing on this Mac…").foregroundStyle(.secondary)
+            } else {
+                Button(meeting.summary == nil ? "Summarize" : "Summarize Again", systemImage: "text.badge.star") {
+                    list.summarize(meeting)
+                }
+                .disabled(meeting.status != .done || meeting.transcript.isEmpty)
+            }
+        }
+        if let error = list.summaryErrors[meeting.id] {
+            Text(error).foregroundStyle(.red).textSelection(.enabled)
+        }
+        if let summary = meeting.summary {
+            Text((try? AttributedString(markdown: summary.text, options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace))) ?? AttributedString(summary.text))
+                .textSelection(.enabled)
+            Text("Written on this Mac by Apple's on-device model, \(summary.createdAt.formatted(date: .abbreviated, time: .shortened))")
+                .font(.caption).foregroundStyle(.secondary)
         }
     }
 

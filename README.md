@@ -13,6 +13,7 @@ Menu bar app that notices when you're in a Zoom or Google Meet call, records it 
 - **Records**: `mic.m4a` (your mic) and `call.m4a` (only the meeting app's sound, not music or notifications).
 - **Transcribes** on-device after the call (Apple SpeechTranscriber). Your mic is labeled `You`; the call's audio is split by voice into `Speaker 1`, `Speaker 2`, … (on-device speaker diarization). The diarizer code and model live in this repo (`Vendor/FluidAudio`, `Models/`), so nothing is fetched at build time or run time.
 - **Titles** the meeting after its Google Calendar invite, matched by Meet code or Zoom meeting ID, falling back to an event happening now. Copies time, organizer, attendees, location, description and link. If the calendar can't be read, the title is the start time.
+- **Summarize** button writes meeting notes (summary, decisions, action items with owners, open questions) with macOS's built-in on-device language model (Apple Foundation Models). It runs only when you click it, entirely on the Mac: about 7 s for a short meeting, about a minute for a long one, which is condensed in parts first. Needs Apple Intelligence turned on.
 - **Copy Transcript** button puts the whole transcript on the clipboard as `[mm:ss] Speaker: text` lines.
 - **Shows** everything in the Transcripts window (menu bar spy icon → Show Transcripts; a dot by its hat means a call is being recorded).
 
@@ -43,6 +44,7 @@ Releases: `./release.sh` (see [AGENTS.md](AGENTS.md)). Every release is reproduc
 - Without headphones your mic also picks up the others, so their words can show up under `You`.
 - Speaker labels are by voice, not name. Similar voices can be merged into one speaker; in a 3-voice test, a male voice was always right but two similar female voices became one speaker.
 - If diarization fails, the call's lines stay labeled `Others`.
+- Notes come from a small on-device model: good for gist and action items, and it can still misattribute an owner.
 - Firefox isn't supported (its tabs can't be read).
 
 ## Credits

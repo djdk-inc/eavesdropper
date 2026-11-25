@@ -116,6 +116,26 @@ if let i = args.firstIndex(of: "--transcribe"), i + 1 < args.count {
     RunLoop.main.run()
 }
 
+/// `--summarize`: read a meeting.json on stdin and print its on-device summary.
+if args.contains("--summarize") {
+    Task {
+        do {
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            let meeting = try decoder.decode(Meeting.self, from: FileHandle.standardInput.readDataToEndOfFile())
+            let started = Date()
+            let summary = try await summarize(meeting)
+            print(summary.text)
+            log(String(format: "summarized %d lines in %.1f s", meeting.transcript.count, Date().timeIntervalSince(started)))
+            exit(0)
+        } catch {
+            print("summary failed: \(error)")
+            exit(1)
+        }
+    }
+    RunLoop.main.run()
+}
+
 /// `--record <pid> <seconds> <folder>`: record one process's sound plus the mic, as during a call.
 if let i = args.firstIndex(of: "--record"), i + 3 < args.count, let pid = Int32(args[i + 1]), let seconds = Double(args[i + 2]) {
     let ids = audioProcesses().filter { $0.pid == pid }.map(\.objectID)
