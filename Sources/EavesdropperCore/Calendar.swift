@@ -177,3 +177,54 @@ public func findEvent(in events: [CalendarEvent], app: CallApp, meetingKey: Stri
     return now15.filter { $0.searchableText.contains(host) }.min(by: { distance($0) < distance($1) })
         ?? now15.min(by: { distance($0) < distance($1) })
 }
+
+// MARK: - Calendar snapshot (helper → recorder, one way)
+
+/// What the calendar helper hands the sandboxed recorder: invite metadata only, never audio or transcripts.
+public struct CalendarSnapshot: Codable, Equatable, Sendable {
+    public var fetchedAt: Date
+    public var events: [CalendarEvent]
+
+    public init(fetchedAt: Date, events: [CalendarEvent]) {
+        self.fetchedAt = fetchedAt
+        self.events = events
+    }
+
+    /// The only events matching can use: recurring series (matched by link, any date) and
+    /// one-off events within two days of now. Keeps the hand-off small.
+    public static func relevant(_ events: [CalendarEvent], around now: Date) -> [CalendarEvent] {
+        events.filter { event in
+            guard event.status?.uppercased() != "CANCELLED" else { return false }
+            if event.isRecurring { return true }
+            guard let start = event.start else { return false }
+            return abs(start.timeIntervalSince(now)) <= 2 * 24 * 3600
+        }
+    }
+
+    public func encoded() throws -> Data {
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .iso8601
+        encoder.outputFormatting = [.sortedKeys]
+        return try encoder.encode(self)
+    }
+
+    public static func decode(_ data: Data) throws -> CalendarSnapshot {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        return try decoder.decode(CalendarSnapshot.self, from: data)
+    }
+}
+
+/// Where the helper writes the snapshot, relative to the user's real home folder. The sandboxed
+/// recorder may read (never write) this one folder; see Eavesdropper.entitlements.
+public let calendarSnapshotRelativePath = "Library/Application Support/Eavesdropper Calendar/calendar.json"
+
+/// The user's real home folder, even inside the App Sandbox (where NSHomeDirectory is the container).
+public func realHomeDirectory() -> URL {
+    if let pw = getpwuid(getuid()), let dir = pw.pointee.pw_dir {
+        return URL(fileURLWithPath: String(cString: dir), isDirectory: true)
+    }
+    return FileManager.default.homeDirectoryForCurrentUser
+}
+
+public var calendarSnapshotURL: URL { realHomeDirectory().appendingPathComponent(calendarSnapshotRelativePath) }

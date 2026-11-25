@@ -8,6 +8,8 @@ func log(_ message: String) {
     FileHandle.standardError.write(Data("[eavesdropper] \(message)\n".utf8))
 }
 
+/// Inside the App Sandbox the home folder is the app's container
+/// (~/Library/Containers/com.djdk.eavesdropper/Data), so recordings never leave it.
 let store = MeetingStore(root: FileManager.default.homeDirectoryForCurrentUser
     .appendingPathComponent("Recordings/Eavesdropper", isDirectory: true))
 
@@ -23,7 +25,7 @@ func meetingURL(for call: Call) -> URL? {
 func attachCalendarEvent(to meeting: Meeting) async -> Meeting {
     var meeting = meeting
     let key = meeting.meetingURL.flatMap(URL.init(string:)).flatMap(meetingKey)
-    meeting.event = findEvent(in: await fetchCalendarEvents(), app: meeting.app, meetingKey: key, at: meeting.startedAt)
+    meeting.event = findEvent(in: await calendarEvents(), app: meeting.app, meetingKey: key, at: meeting.startedAt)
     log("title: \(meeting.title)")
     return meeting
 }
@@ -64,12 +66,41 @@ if args.contains("--probe") {
     exit(0)
 }
 
-/// `--transcribe <audio file> [--speakers]`: print the on-device transcript of a file,
-/// labeled by voice with `--speakers` (as the call side of a meeting is).
+/// `--version`: print the stamped version.
+if args.contains("--version") {
+    print("Eavesdropper \(versionDescription)")
+    exit(0)
+}
+
+/// `--network-selftest`: try to reach the internet by name and by raw IP; inside the App Sandbox both must fail.
+if args.contains("--network-selftest") {
+    Task {
+        var reachable = false
+        for target in ["https://example.com", "https://1.1.1.1"] {
+            do {
+                let (_, response) = try await URLSession.shared.data(from: URL(string: target)!)
+                print("REACHABLE \(target) (HTTP \((response as? HTTPURLResponse)?.statusCode ?? 0)): isolation is broken")
+                reachable = true
+            } catch {
+                print("blocked   \(target): \(error.localizedDescription)")
+            }
+        }
+        exit(reachable ? 1 : 0)
+    }
+    RunLoop.main.run()
+}
+
+/// `--transcribe <audio file | -> [--speakers]`: print the on-device transcript of a file,
+/// labeled by voice with `--speakers` (as the call side of a meeting is). `-` reads the audio
+/// from stdin, since the sandboxed app can't open files outside its container.
 if let i = args.firstIndex(of: "--transcribe"), i + 1 < args.count {
     Task {
         do {
-            let file = URL(fileURLWithPath: args[i + 1])
+            var file = URL(fileURLWithPath: args[i + 1])
+            if args[i + 1] == "-" {
+                file = FileManager.default.temporaryDirectory.appendingPathComponent("stdin-\(UUID().uuidString).m4a")
+                try FileHandle.standardInput.readDataToEndOfFile().write(to: file)
+            }
             guard FileManager.default.fileExists(atPath: file.path) else {
                 print("file not found: \(file.path)")
                 exit(1)
@@ -98,11 +129,11 @@ if let i = args.firstIndex(of: "--record"), i + 3 < args.count, let pid = Int32(
     RunLoop.main.run()
 }
 
-/// `--calendar [meeting URL]`: fetch the calendar and print which invite a call at that URL, now, would get.
+/// `--calendar [meeting URL]`: run the calendar helper and print which invite a call at that URL, now, would get.
 if let i = args.firstIndex(of: "--calendar") {
     let url = i + 1 < args.count ? URL(string: args[i + 1]) : nil
     Task {
-        let events = await fetchCalendarEvents()
+        let events = await calendarEvents()
         let app: CallApp = url?.host == "meet.google.com" ? .meet : .zoom
         let event = findEvent(in: events, app: app, meetingKey: url.flatMap(meetingKey), at: Date())
         print("events \(events.count)")
@@ -130,6 +161,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(statusLine)
         menu.addItem(.separator())
         menu.addItem(NSMenuItem(title: "Show Transcripts", action: #selector(showTranscripts), keyEquivalent: "t"))
+        menu.addItem(.separator())
+        let version = NSMenuItem(title: "Eavesdropper \(versionDescription)", action: nil, keyEquivalent: "")
+        version.isEnabled = false
+        menu.addItem(version)
         menu.addItem(NSMenuItem(title: "Quit Eavesdropper", action: #selector(quit), keyEquivalent: "q"))
         statusItem.menu = menu
         render()
