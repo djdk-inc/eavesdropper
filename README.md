@@ -4,6 +4,8 @@
 
 Menu bar app that notices when you're in a Zoom or Google Meet call, records it from your Mac, and saves a transcript titled after the calendar invite. It never joins calls; it only listens on this Mac. Audio and transcription stay on the Mac.
 
+![The Transcripts window: meeting details, on-device summary, and speaker-labelled transcript](assets/transcripts-window.png)
+
 ## What it does
 
 - **Detects calls**: every second it checks which apps macOS says are using the mic or speakers.
@@ -16,6 +18,17 @@ Menu bar app that notices when you're in a Zoom or Google Meet call, records it 
 - **Summarize** button writes meeting notes (summary, decisions, action items with owners, open questions) with macOS's built-in on-device language model (Apple Foundation Models). It runs only when you click it, entirely on the Mac: about 7 s for a short meeting, about a minute for a long one, which is condensed in parts first. Needs Apple Intelligence turned on.
 - **Copy Transcript** button puts the whole transcript on the clipboard as `[mm:ss] Speaker: text` lines.
 - **Shows** everything in the Transcripts window (menu bar spy icon → Show Transcripts; a dot by its hat means a call is being recorded).
+
+## How summaries stay on the Mac
+
+Summaries use the language model built into macOS 26 (Apple Intelligence's on-device model, `SystemLanguageModel` in Apple's Foundation Models framework). Its weights are already on your Mac; Eavesdropper bundles nothing.
+
+1. Clicking **Summarize** checks that the model is available, which needs Apple Intelligence turned on.
+2. The transcript is split into ~6,000-character parts, because the model reads about 4,096 tokens at a time.
+3. Each part is condensed into bullets, then a final request turns the bullets into notes: summary, decisions, action items with owners, open questions.
+4. Empty sections are dropped, and the notes are saved with the meeting.
+
+The model runs on the Mac's Apple Silicon in a macOS system process. Eavesdropper never uses the cloud variant (`PrivateCloudComputeLanguageModel`), and the recorder itself can't open a network connection (see below). To see it for yourself, turn Wi-Fi off and click Summarize.
 
 ## Privacy and isolation
 

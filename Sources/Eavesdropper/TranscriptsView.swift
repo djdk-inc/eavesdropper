@@ -75,7 +75,11 @@ struct MeetingDetail: View {
     @ObservedObject var list: MeetingList
 
     var body: some View {
-        ScrollView {
+        ScrollView { page }
+    }
+
+    /// The page without its scroll view, so it can also be rendered to an image (`--render`).
+    var page: some View {
             VStack(alignment: .leading, spacing: 16) {
                 HStack(alignment: .firstTextBaseline) {
                     Text(meeting.title).font(.title2.bold()).textSelection(.enabled)
@@ -93,7 +97,6 @@ struct MeetingDetail: View {
             }
             .padding(20)
             .frame(maxWidth: .infinity, alignment: .leading)
-        }
     }
 
     @ViewBuilder
@@ -116,8 +119,17 @@ struct MeetingDetail: View {
             Text(error).foregroundStyle(.red).textSelection(.enabled)
         }
         if let summary = meeting.summary {
-            Text((try? AttributedString(markdown: summary.text, options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace))) ?? AttributedString(summary.text))
-                .textSelection(.enabled)
+            VStack(alignment: .leading, spacing: 4) {
+                ForEach(Array(noteBlocks(summary.text).enumerated()), id: \.offset) { _, block in
+                    switch block {
+                    case let .heading(title):
+                        Text(title).font(.subheadline.bold()).padding(.top, 8)
+                    case let .line(text):
+                        Text((try? AttributedString(markdown: text)) ?? AttributedString(text))
+                    }
+                }
+            }
+            .textSelection(.enabled)
             Text("Written on this Mac by Apple's on-device model, \(summary.createdAt.formatted(date: .abbreviated, time: .shortened))")
                 .font(.caption).foregroundStyle(.secondary)
         }
