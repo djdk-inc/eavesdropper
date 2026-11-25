@@ -172,9 +172,14 @@ public func findEvent(in events: [CalendarEvent], app: CallApp, meetingKey: Stri
         if let nearest = linked.min(by: { distance($0) < distance($1) }) { return nearest }
     }
 
-    let host = app == .zoom ? "zoom.us" : "meet.google.com"
+    let host: String? = switch app {
+    case .zoom: "zoom.us"
+    case .meet: "meet.google.com"
+    case .manual: nil
+    }
     let now15 = live.filter { !$0.isRecurring && $0.overlaps(now, slack: 15 * 60) }
-    return now15.filter { $0.searchableText.contains(host) }.min(by: { distance($0) < distance($1) })
+    let withLink = host.map { h in now15.filter { $0.searchableText.contains(h) } } ?? []
+    return withLink.min(by: { distance($0) < distance($1) })
         ?? now15.min(by: { distance($0) < distance($1) })
 }
 

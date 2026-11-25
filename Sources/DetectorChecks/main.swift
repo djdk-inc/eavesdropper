@@ -129,6 +129,10 @@ expect(findEvent(in: events, app: .zoom, meetingKey: nil, at: at("2026-11-25T18:
 expect(findEvent(in: events, app: .zoom, meetingKey: nil, at: at("2026-11-25T18:45:00Z")).map(\.title) != "Out of office", "all-day never matched")
 expect(findEvent(in: events, app: .meet, meetingKey: "zzz-zzzz-zzz", at: at("2026-11-25T23:00:00Z")) == nil, "nothing matches → nil")
 
+// Manual recordings match whatever invite is happening now
+expect(findEvent(in: events, app: .manual, meetingKey: nil, at: at("2026-11-25T18:30:00Z"))?.title == "Design review, Q4", "manual recording: invite happening now")
+expect(Meeting(id: "m", app: .manual, startedAt: at("2026-11-25T18:00:00Z"), meetingURL: nil).title.hasPrefix("Manual recording – "), "manual recording timestamp title")
+
 // Titles
 var m = Meeting(id: "x", app: .zoom, startedAt: at("2026-11-25T18:00:00Z"), meetingURL: nil)
 expect(m.title.hasPrefix("Zoom call – "), "no invite → timestamp title (\(m.title))")

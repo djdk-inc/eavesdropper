@@ -161,6 +161,28 @@ if let i = args.firstIndex(of: "--render") {
     }
 }
 
+/// `--listen-for <seconds>`: what Start Listening does, headless: record everything the Mac plays plus
+/// the mic for that long, then transcribe, save the meeting, and print its id and transcript.
+if let i = args.firstIndex(of: "--listen-for"), i + 1 < args.count, let seconds = Double(args[i + 1]) {
+    let now = Date()
+    let id = "\(now.formatted(.iso8601.year().month().day().time(includingFractionalSeconds: false).timeSeparator(.omitted))) \(CallApp.manual.rawValue)"
+    var meeting = Meeting(id: id, app: .manual, startedAt: now, meetingURL: nil)
+    try store.save(meeting)
+    let recorder = try CallRecorder(call: Call(app: .manual, processObjectIDs: []), folder: store.folder(for: id))
+    DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+        recorder.stop()
+        meeting.endedAt = Date()
+        Task {
+            meeting = await transcribeMeeting(meeting)
+            try? store.save(meeting)
+            print("meeting \(id) (\(meeting.status.rawValue))")
+            print(transcriptText(meeting.transcript))
+            exit(meeting.status == .done ? 0 : 1)
+        }
+    }
+    RunLoop.main.run()
+}
+
 /// `--record <pid> <seconds> <folder>`: record one process's sound plus the mic, as during a call.
 if let i = args.firstIndex(of: "--record"), i + 3 < args.count, let pid = Int32(args[i + 1]), let seconds = Double(args[i + 2]) {
     let ids = audioProcesses().filter { $0.pid == pid }.map(\.objectID)
@@ -200,10 +222,15 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var debouncer = CallDebouncer(startAfter: 4, stopAfter: 3) // 1 s polls: start ~4 s in, stop ~3 s after
     private var recorder: CallRecorder?
     private var meeting: Meeting?
+    /// True while a recording started from the menu runs; call detection pauses until it's stopped.
+    private var manual = false
+    private let listenItem = NSMenuItem(title: "Start Listening", action: #selector(toggleListening), keyEquivalent: "l")
 
     func applicationDidFinishLaunching(_: Notification) {
         let menu = NSMenu()
+        menu.autoenablesItems = false
         menu.addItem(statusLine)
+        menu.addItem(listenItem)
         menu.addItem(.separator())
         menu.addItem(NSMenuItem(title: "Show Transcripts", action: #selector(showTranscripts), keyEquivalent: "t"))
         menu.addItem(.separator())
@@ -220,6 +247,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func poll() {
+        guard !manual else { return render() }
         switch debouncer.observe(detectCall(processes: audioProcesses(), tabURLs: openTabURLs)) {
         case let .started(call)?: start(call)
         case .ended?: end()
@@ -265,6 +293,19 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
+    /// Menu: starts recording everything the Mac plays plus the mic, or stops a recording started here.
+    @objc private func toggleListening() {
+        if manual {
+            end()
+            manual = false
+            debouncer = CallDebouncer(startAfter: 4, stopAfter: 3)
+        } else if meeting == nil {
+            manual = true
+            start(Call(app: .manual, processObjectIDs: []))
+        }
+        render()
+    }
+
     private func save(_ meeting: Meeting) {
         do { try store.save(meeting) } catch { log("save failed: \(error)") }
         list.reload()
@@ -278,6 +319,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             statusItem.button?.image = spyIcon(listening: false)
             statusLine.title = "Waiting for a call"
         }
+        // A detected call stops on its own; only a manual recording has a Stop.
+        listenItem.title = manual ? "Stop Listening" : "Start Listening"
+        listenItem.isEnabled = manual || meeting == nil
     }
 
     @objc private func showTranscripts() {
@@ -295,6 +339,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc private func quit() {
         if meeting != nil { end() }
+        manual = false
         NSApp.terminate(nil)
     }
 }

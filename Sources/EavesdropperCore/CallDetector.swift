@@ -51,6 +51,8 @@ public enum Browser: String, CaseIterable, Sendable {
 public enum CallApp: String, Codable, Sendable {
     case zoom = "Zoom"
     case meet = "Google Meet"
+    /// Started from the menu: records everything the Mac plays, not one app.
+    case manual = "Manual recording"
 }
 
 /// A call in progress, the audio processes carrying its sound, and the meeting tab's URL
