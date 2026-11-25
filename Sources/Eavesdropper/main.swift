@@ -115,7 +115,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private let statusLine = NSMenuItem(title: "Waiting for a call", action: nil, keyEquivalent: "")
     private let list = MeetingList(store: store)
     private var window: NSWindow?
-    private var debouncer = CallDebouncer()
+    private var debouncer = CallDebouncer(startAfter: 4, stopAfter: 3) // 1 s polls: start ~4 s in, stop ~3 s after
     private var recorder: CallRecorder?
     private var meeting: Meeting?
 
@@ -129,7 +129,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         render()
 
         AVCaptureDevice.requestAccess(for: .audio) { granted in log("microphone access: \(granted)") }
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { _ in Task { @MainActor in self.poll() } }
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in Task { @MainActor in self.poll() } }
         log("watching for Zoom and Google Meet calls; meetings go to \(store.root.path)")
     }
 
