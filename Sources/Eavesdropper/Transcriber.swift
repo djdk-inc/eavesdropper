@@ -17,7 +17,7 @@ func transcribe(_ file: URL, speaker: String) async throws -> [TranscriptLine] {
         var lines = [TranscriptLine]()
         for try await result in transcriber.results where result.isFinal {
             let text = String(result.text.characters).trimmingCharacters(in: .whitespacesAndNewlines)
-            if !text.isEmpty { lines.append(TranscriptLine(start: result.range.start.seconds, speaker: speaker, text: text)) }
+            if !text.isEmpty { lines.append(TranscriptLine(start: result.range.start.seconds, end: result.range.end.seconds, speaker: speaker, text: text)) }
         }
         return lines
     }
