@@ -1,3 +1,0 @@
-module FluidAudio {
-    header "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/include/FluidAudio-Swift.h"
-}

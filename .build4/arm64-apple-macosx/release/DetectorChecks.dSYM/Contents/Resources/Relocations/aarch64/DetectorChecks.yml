@@ -1,5 +1,0 @@
----
-triple:          'arm64-apple-darwin'
-binary-path:     '/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/release/DetectorChecks'
-relocations:     []
-...
