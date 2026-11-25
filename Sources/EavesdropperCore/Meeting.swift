@@ -45,6 +45,15 @@ public struct Meeting: Codable, Identifiable, Sendable {
     }
 }
 
+/// The transcript as plain text, one "[mm:ss] Speaker: text" line each ("[h:mm:ss]" past the hour).
+public func transcriptText(_ transcript: [TranscriptLine]) -> String {
+    transcript.map { line in
+        let t = Int(line.start)
+        let stamp = t >= 3600 ? String(format: "%d:%02d:%02d", t / 3600, t / 60 % 60, t % 60) : String(format: "%02d:%02d", t / 60, t % 60)
+        return "[\(stamp)] \(line.speaker): \(line.text)"
+    }.joined(separator: "\n")
+}
+
 /// Interleaves your lines and the others' lines by time.
 public func mergeTranscripts(you: [TranscriptLine], others: [TranscriptLine]) -> [TranscriptLine] {
     (you + others).sorted { $0.start < $1.start }
