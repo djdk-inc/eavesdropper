@@ -70,6 +70,10 @@ if let i = args.firstIndex(of: "--transcribe"), i + 1 < args.count {
     Task {
         do {
             let file = URL(fileURLWithPath: args[i + 1])
+            guard FileManager.default.fileExists(atPath: file.path) else {
+                print("file not found: \(file.path)")
+                exit(1)
+            }
             let lines = args.contains("--speakers") ? try await transcribeCall(file) : try await transcribe(file, speaker: "Speaker")
             print(transcriptText(lines))
             exit(0)
