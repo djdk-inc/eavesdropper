@@ -140,6 +140,11 @@ let merged = mergeTranscripts(you: [TranscriptLine(start: 1, speaker: "You", tex
                               others: [TranscriptLine(start: 4, speaker: "Others", text: "hello")])
 expect(merged.map(\.text) == ["hi", "hello", "bye"], "both sides interleaved by time")
 
+// Copied transcript text
+expect(transcriptText(merged) == "[00:01] You: hi\n[00:04] Others: hello\n[00:09] You: bye", "copy text: one stamped line each")
+expect(transcriptText([TranscriptLine(start: 3725, speaker: "Others", text: "late")]) == "[1:02:05] Others: late", "copy text past the hour")
+expect(transcriptText([]) == "", "empty transcript copies nothing")
+
 // Store round trip
 let dir = FileManager.default.temporaryDirectory.appendingPathComponent("eavesdropper-checks-\(UUID().uuidString)")
 let s2 = MeetingStore(root: dir)

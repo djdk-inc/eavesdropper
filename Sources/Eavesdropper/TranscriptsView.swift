@@ -1,3 +1,4 @@
+import AppKit
 import EavesdropperCore
 import SwiftUI
 
@@ -5,6 +6,8 @@ import SwiftUI
 final class MeetingList: ObservableObject {
     @Published var meetings: [Meeting] = []
     @Published var selection: Meeting.ID?
+    /// The meeting whose transcript was just copied, for brief "Copied" feedback.
+    @Published var copied: Meeting.ID?
     let store: MeetingStore
 
     init(store: MeetingStore) {
@@ -13,6 +16,15 @@ final class MeetingList: ObservableObject {
     }
 
     func reload() { meetings = store.all() }
+
+    func copyTranscript(of meeting: Meeting) {
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.setString(transcriptText(meeting.transcript), forType: .string)
+        copied = meeting.id
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+            if self?.copied == meeting.id { self?.copied = nil }
+        }
+    }
 }
 
 struct TranscriptsView: View {
@@ -30,7 +42,7 @@ struct TranscriptsView: View {
             .navigationSplitViewColumnWidth(min: 220, ideal: 260)
         } detail: {
             if let meeting = list.meetings.first(where: { $0.id == list.selection }) {
-                MeetingDetail(meeting: meeting)
+                MeetingDetail(meeting: meeting, list: list)
             } else {
                 Text(list.meetings.isEmpty ? "No meetings yet" : "Select a meeting").foregroundStyle(.secondary)
             }
@@ -41,11 +53,19 @@ struct TranscriptsView: View {
 
 struct MeetingDetail: View {
     let meeting: Meeting
+    @ObservedObject var list: MeetingList
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                Text(meeting.title).font(.title2.bold()).textSelection(.enabled)
+                HStack(alignment: .firstTextBaseline) {
+                    Text(meeting.title).font(.title2.bold()).textSelection(.enabled)
+                    Spacer()
+                    Button(list.copied == meeting.id ? "Copied" : "Copy Transcript", systemImage: list.copied == meeting.id ? "checkmark" : "doc.on.doc") {
+                        list.copyTranscript(of: meeting)
+                    }
+                    .disabled(meeting.transcript.isEmpty)
+                }
                 metadata
                 Divider()
                 transcript
@@ -97,9 +117,7 @@ struct MeetingDetail: View {
             if meeting.transcript.isEmpty {
                 Text("No speech found").foregroundStyle(.secondary)
             } else {
-                Text(meeting.transcript.map { line in
-                    "[\(Duration.seconds(line.start).formatted(.time(pattern: .minuteSecond)))] \(line.speaker): \(line.text)"
-                }.joined(separator: "\n"))
+                Text(transcriptText(meeting.transcript))
                 .font(.body.monospaced())
                 .textSelection(.enabled)
             }
