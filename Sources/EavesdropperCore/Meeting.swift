@@ -46,7 +46,8 @@ public struct Meeting: Codable, Identifiable, Sendable {
     /// The invite's title, or the start time when no invite matched.
     public var title: String {
         if let t = event?.title, !t.isEmpty { return t }
-        return "\(app.rawValue) call – \(startedAt.formatted(date: .abbreviated, time: .shortened))"
+        let name = app == .manual ? app.rawValue : "\(app.rawValue) call"
+        return "\(name) – \(startedAt.formatted(date: .abbreviated, time: .shortened))"
     }
 }
 

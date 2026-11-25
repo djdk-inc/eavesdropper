@@ -60,6 +60,7 @@ Diagnostic modes on the built binary (`Eavesdropper.app/Contents/MacOS/Eavesdrop
 | `--probe` | What call detection sees right now |
 | `--calendar [meeting URL]` | Runs the helper and shows which invite would match |
 | `--transcribe - [--speakers] < file.m4a` | The transcript of audio on stdin (the sandbox can't open arbitrary paths) |
+| `--listen-for <seconds>` | What Start Listening does, headless: records all system audio plus the mic, then transcribes and saves |
 | `--summarize < meeting.json` | On-device notes for a saved meeting |
 | `--render [meeting id] > page.png` | A PNG of a meeting's page as the window shows it (layout checks, README screenshot) |
 | `--network-selftest` | Must report both targets blocked |

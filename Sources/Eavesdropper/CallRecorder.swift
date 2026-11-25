@@ -39,7 +39,7 @@ final class CallRecorder {
         self.folder = folder
         try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
         do {
-            try startCallAudio(processObjectIDs: call.processObjectIDs)
+            try startCallAudio(call)
         } catch {
             log("call audio not recorded: \(error)")
         }
@@ -61,8 +61,15 @@ final class CallRecorder {
         try engine.start()
     }
 
-    private func startCallAudio(processObjectIDs: [AudioObjectID]) throws {
-        let description = CATapDescription(stereoMixdownOfProcesses: processObjectIDs)
+    /// A call app's own sound, or for a manual recording everything the Mac plays (minus Eavesdropper).
+    private func startCallAudio(_ call: Call) throws {
+        let description: CATapDescription
+        if call.app == .manual {
+            let ownProcess = audioProcesses().filter { $0.pid == getpid() }.map(\.objectID)
+            description = CATapDescription(stereoGlobalTapButExcludeProcesses: ownProcess)
+        } else {
+            description = CATapDescription(stereoMixdownOfProcesses: call.processObjectIDs)
+        }
         description.uuid = UUID()
         description.muteBehavior = .unmuted
         description.isPrivate = true
