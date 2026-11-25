@@ -1,0 +1,46 @@
+[
+  [
+    [0, "Okay, let's get started. The main thing today is whether we can ship the beta on Monday."],
+    [1, "Honestly, I don't think Monday works. The login bug is still open and QA hasn't signed off."],
+    [0, "How long would the fix take if we put two people on it?"],
+    [2, "I looked at it this morning. It's a session timeout issue, probably two days of work including tests."],
+    [1, "So Wednesday at the earliest, and that's if nothing else comes up."],
+    [2, "I can take the fix if someone else covers the release notes."],
+    [0, "Great. I'll write the release notes, and we target Wednesday."],
+    [1, "Sounds good. I'll tell the support team so they can update customers."]
+  ],
+  [
+    [0, "Thanks for joining. I want to review the hiring plan for next quarter."],
+    [1, "We have budget for three engineers, but recruiting says the pipeline is thin."],
+    [0, "Should we bring in an agency, or lean on referrals first?"],
+    [1, "Referrals first. Agencies cost about twenty percent of the first year salary."],
+    [0, "Fair. Can you draft a referral bonus proposal by Friday?"],
+    [1, "Yes. I'll send it to finance as well so they can check the numbers."]
+  ],
+  [
+    [0, "The customer in Denver reported that exports fail for files over two gigabytes."],
+    [1, "That's the upload limit on the storage bucket. We set it years ago."],
+    [2, "Raising it is easy, but the export job also runs out of memory on large files."],
+    [0, "So we need to stream the export instead of loading everything at once."],
+    [2, "Right. I can prototype streaming this week and measure memory use."],
+    [1, "I'll raise the bucket limit today so the customer is unblocked for smaller exports."],
+    [0, "Let's check in again on Thursday with the numbers."]
+  ],
+  [
+    [0, "Quick update on the office move. The lease on the new floor starts in March."],
+    [1, "Do we know the seating plan yet? My team wants to sit near the design group."],
+    [0, "Not yet. Facilities will share a draft next Tuesday."],
+    [1, "Can we also ask for two more meeting rooms? We're always fighting for space."],
+    [0, "I'll add that to the request. Anything else before we wrap up?"],
+    [1, "Just parking. Please ask whether the garage has spots for bikes."]
+  ],
+  [
+    [0, "Let's go over the marketing launch for the mobile app."],
+    [1, "The landing page is done, and the video will be ready next Wednesday."],
+    [2, "Paid ads are approved for a budget of fifteen thousand dollars in the first month."],
+    [0, "What's our main goal, downloads or signups?"],
+    [2, "Signups. Downloads without accounts don't help retention."],
+    [1, "Then the video should end on the signup screen, not the store page. I'll ask the editor to change it."],
+    [0, "Agreed. Launch stays on the twelfth unless the video slips."]
+  ]
+]
