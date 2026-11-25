@@ -2,3 +2,6 @@
 *.app/
 .models/
 dist/
+.venv/
+.tmp/
+__pycache__/
