@@ -2,8 +2,8 @@ import EavesdropperCore
 import FluidAudio
 import Foundation
 
-/// The diarizer model bundled inside Eavesdropper.app by build-app.sh, so the app never downloads it.
-/// Outside the app (swift run), the library's own cache is used.
+/// The diarizer model, copied into Eavesdropper.app by build-app.sh from the repo's Models/ folder.
+/// Nothing is ever downloaded; outside the app bundle, diarization is unavailable and lines stay "Others".
 var bundledDiarizerModels: URL? {
     let dir = Bundle.main.bundleURL.appendingPathComponent("Contents/Resources/DiarizerModels", isDirectory: true)
     return FileManager.default.fileExists(atPath: dir.path) ? dir : nil

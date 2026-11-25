@@ -1,0 +1,22 @@
+{
+  "": {
+    "dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/release/EavesdropperCore.build/EavesdropperCore.d",
+    "object": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/release/EavesdropperCore.build/EavesdropperCore.o",
+    "swift-dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/release/EavesdropperCore.build/primary.swiftdeps"
+  },
+  "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/EavesdropperCore/Calendar.swift": {
+    "object": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/release/EavesdropperCore.build/Calendar.swift.o",
+    "swiftmodule": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/release/EavesdropperCore.build/Calendar~partial.swiftmodule",
+    "swift-dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/release/EavesdropperCore.build/Calendar.swiftdeps",
+    "diagnostics": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/release/EavesdropperCore.build/Calendar.dia"  },
+  "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/EavesdropperCore/CallDetector.swift": {
+    "object": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/release/EavesdropperCore.build/CallDetector.swift.o",
+    "swiftmodule": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/release/EavesdropperCore.build/CallDetector~partial.swiftmodule",
+    "swift-dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/release/EavesdropperCore.build/CallDetector.swiftdeps",
+    "diagnostics": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/release/EavesdropperCore.build/CallDetector.dia"  },
+  "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/EavesdropperCore/Meeting.swift": {
+    "object": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/release/EavesdropperCore.build/Meeting.swift.o",
+    "swiftmodule": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/release/EavesdropperCore.build/Meeting~partial.swiftmodule",
+    "swift-dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/release/EavesdropperCore.build/Meeting.swiftdeps",
+    "diagnostics": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/release/EavesdropperCore.build/Meeting.dia"  }
+}

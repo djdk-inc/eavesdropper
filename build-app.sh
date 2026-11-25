@@ -8,12 +8,10 @@ app=Eavesdropper.app
 mkdir -p "$app/Contents/MacOS"
 cp .build2/release/Eavesdropper "$app/Contents/MacOS/Eavesdropper"
 
-# Bundle the speaker-diarization model so the app never downloads it (fetched once into .models/).
-models=.models/DiarizerModels
-[ -d "$models" ] || .build2/release/Eavesdropper --fetch-diarizer-models "$models"
+# Bundle the speaker-diarization model from the repo (no download).
 mkdir -p "$app/Contents/Resources"
 rm -rf "$app/Contents/Resources/DiarizerModels"
-cp -R "$models" "$app/Contents/Resources/DiarizerModels"
+cp -R Models "$app/Contents/Resources/DiarizerModels"
 cat > "$app/Contents/Info.plist" <<'EOF'
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">

@@ -11,7 +11,7 @@ Menu bar app that notices when you're in a Zoom or Google Meet call, records it 
   - Meet or Zoom in a browser (Chrome, Arc, Edge, Brave, Safari): the browser is using audio and has a meeting tab open (`meet.google.com/abc-defg-hij`, `zoom.us/wc/<id>`).
   - Starts after ~4 s, ends ~3 s after audio stops.
 - **Records**: `mic.m4a` (your mic) and `call.m4a` (only the meeting app's sound, not music or notifications).
-- **Transcribes** on-device after the call (Apple SpeechTranscriber). Your mic is labeled `You`; the call's audio is split by voice into `Speaker 1`, `Speaker 2`, … (on-device speaker diarization, [FluidAudio](https://github.com/FluidInference/FluidAudio)). The diarization model is bundled inside the app at build time, so the app never downloads it.
+- **Transcribes** on-device after the call (Apple SpeechTranscriber). Your mic is labeled `You`; the call's audio is split by voice into `Speaker 1`, `Speaker 2`, … (on-device speaker diarization). The diarizer code and model live in this repo (`Vendor/FluidAudio`, `Models/`), so nothing is fetched at build time or run time.
 - **Titles** the meeting after its Google Calendar invite, matched by Meet code or Zoom meeting ID, falling back to an event happening now. Copies time, organizer, attendees, location, description and link. If the calendar can't be read, the title is the start time.
 - **Copy Transcript** button puts the whole transcript on the clipboard as `[mm:ss] Speaker: text` lines.
 - **Shows** everything in the Transcripts window (menu bar spy icon → Show Transcripts; a dot by its hat means a call is being recorded).
@@ -49,3 +49,8 @@ Eavesdropper.app/Contents/MacOS/Eavesdropper --record <pid> <sec> <dir>  # recor
 - Speaker labels are by voice, not name. Similar voices can be merged into one speaker; in a 3-voice test, a male voice was always right but two similar female voices became one speaker.
 - If diarization fails, the call's lines stay labeled `Others`.
 - Firefox isn't supported (its tabs can't be read).
+
+## Credits
+
+- Speaker diarization code: trimmed from [FluidAudio](https://github.com/FluidInference/FluidAudio) v0.18.4 by Fluid Inference, Apache-2.0. See `Vendor/FluidAudio/NOTICE`.
+- Speaker diarization model (`Models/speaker-diarization`): Core ML conversion by Fluid Inference of [pyannote/speaker-diarization-community-1](https://huggingface.co/pyannote/speaker-diarization-community-1), licensed CC-BY-4.0.

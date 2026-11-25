@@ -1,0 +1,12 @@
+{
+  "": {
+    "dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/release/DetectorChecks.build/DetectorChecks.d",
+    "object": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/release/DetectorChecks.build/DetectorChecks.o",
+    "swift-dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/release/DetectorChecks.build/primary.swiftdeps"
+  },
+  "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/DetectorChecks/main.swift": {
+    "object": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/release/DetectorChecks.build/main.swift.o",
+    "swiftmodule": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/release/DetectorChecks.build/main~partial.swiftmodule",
+    "swift-dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/release/DetectorChecks.build/main.swiftdeps",
+    "diagnostics": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/release/DetectorChecks.build/main.dia"  }
+}

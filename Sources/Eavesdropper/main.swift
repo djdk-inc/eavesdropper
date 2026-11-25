@@ -85,22 +85,6 @@ if let i = args.firstIndex(of: "--transcribe"), i + 1 < args.count {
     RunLoop.main.run()
 }
 
-/// `--fetch-diarizer-models <dir>`: download the diarizer model into a folder (build-app.sh bundles it).
-if let i = args.firstIndex(of: "--fetch-diarizer-models"), i + 1 < args.count {
-    Task {
-        do {
-            let manager = OfflineDiarizerManager(config: OfflineDiarizerConfig())
-            try await manager.prepareModels(directory: URL(fileURLWithPath: args[i + 1], isDirectory: true))
-            print("diarizer model ready in \(args[i + 1])")
-            exit(0)
-        } catch {
-            print("model download failed: \(error)")
-            exit(1)
-        }
-    }
-    RunLoop.main.run()
-}
-
 /// `--record <pid> <seconds> <folder>`: record one process's sound plus the mic, as during a call.
 if let i = args.firstIndex(of: "--record"), i + 3 < args.count, let pid = Int32(args[i + 1]), let seconds = Double(args[i + 2]) {
     let ids = audioProcesses().filter { $0.pid == pid }.map(\.objectID)

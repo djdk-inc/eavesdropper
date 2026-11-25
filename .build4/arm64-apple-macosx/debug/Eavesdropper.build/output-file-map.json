@@ -1,0 +1,59 @@
+{
+  "": {
+    "swift-dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/primary.swiftdeps"
+  },
+  "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/AudioProcesses.swift": {
+    "dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/AudioProcesses.d",
+    "object": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/AudioProcesses.swift.o",
+    "swiftmodule": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/AudioProcesses~partial.swiftmodule",
+    "swift-dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/AudioProcesses.swiftdeps",
+    "diagnostics": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/AudioProcesses.dia"  },
+  "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/BrowserTabs.swift": {
+    "dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/BrowserTabs.d",
+    "object": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/BrowserTabs.swift.o",
+    "swiftmodule": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/BrowserTabs~partial.swiftmodule",
+    "swift-dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/BrowserTabs.swiftdeps",
+    "diagnostics": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/BrowserTabs.dia"  },
+  "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/CalendarFeed.swift": {
+    "dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/CalendarFeed.d",
+    "object": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/CalendarFeed.swift.o",
+    "swiftmodule": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/CalendarFeed~partial.swiftmodule",
+    "swift-dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/CalendarFeed.swiftdeps",
+    "diagnostics": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/CalendarFeed.dia"  },
+  "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/CallRecorder.swift": {
+    "dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/CallRecorder.d",
+    "object": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/CallRecorder.swift.o",
+    "swiftmodule": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/CallRecorder~partial.swiftmodule",
+    "swift-dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/CallRecorder.swiftdeps",
+    "diagnostics": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/CallRecorder.dia"  },
+  "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/Diarizer.swift": {
+    "dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/Diarizer.d",
+    "object": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/Diarizer.swift.o",
+    "swiftmodule": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/Diarizer~partial.swiftmodule",
+    "swift-dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/Diarizer.swiftdeps",
+    "diagnostics": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/Diarizer.dia"  },
+  "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/SpyIcon.swift": {
+    "dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/SpyIcon.d",
+    "object": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/SpyIcon.swift.o",
+    "swiftmodule": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/SpyIcon~partial.swiftmodule",
+    "swift-dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/SpyIcon.swiftdeps",
+    "diagnostics": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/SpyIcon.dia"  },
+  "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/Transcriber.swift": {
+    "dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/Transcriber.d",
+    "object": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/Transcriber.swift.o",
+    "swiftmodule": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/Transcriber~partial.swiftmodule",
+    "swift-dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/Transcriber.swiftdeps",
+    "diagnostics": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/Transcriber.dia"  },
+  "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/TranscriptsView.swift": {
+    "dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/TranscriptsView.d",
+    "object": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/TranscriptsView.swift.o",
+    "swiftmodule": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/TranscriptsView~partial.swiftmodule",
+    "swift-dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/TranscriptsView.swiftdeps",
+    "diagnostics": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/TranscriptsView.dia"  },
+  "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/main.swift": {
+    "dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/main.d",
+    "object": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/main.swift.o",
+    "swiftmodule": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/main~partial.swiftmodule",
+    "swift-dependencies": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/main.swiftdeps",
+    "diagnostics": "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/main.dia"  }
+}

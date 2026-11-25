@@ -1,0 +1,2080 @@
+{
+  "builtTestProducts" : [
+
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.DetectorChecks-arm64-apple-macosx-debug.module" : {
+      "executable" : "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "fileList" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/DetectorChecks.build/sources",
+      "importPath" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/DetectorChecks/main.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Modules/EavesdropperCore.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/DetectorChecks.build/sources"
+        }
+      ],
+      "isLibrary" : false,
+      "moduleName" : "DetectorChecks",
+      "moduleOutputPath" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Modules/DetectorChecks.swiftmodule",
+      "objects" : [
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/DetectorChecks.build/main.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx26.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j10",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-Xfrontend",
+        "-entry-point-function-name",
+        "-Xfrontend",
+        "DetectorChecks_main",
+        "-swift-version",
+        "5",
+        "-I",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-L",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-plugin-path",
+        "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "speaker_labels"
+      ],
+      "outputFileMapPath" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/DetectorChecks.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/DetectorChecks.build/main.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Modules/DetectorChecks.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/DetectorChecks/main.swift"
+      ],
+      "tempsPath" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/DetectorChecks.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.Eavesdropper-arm64-apple-macosx-debug.module" : {
+      "executable" : "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "fileList" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/sources",
+      "importPath" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/AudioProcesses.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/BrowserTabs.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/CalendarFeed.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/CallRecorder.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/Diarizer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/SpyIcon.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/Transcriber.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/TranscriptsView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/main.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Modules/EavesdropperCore.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Modules/FluidAudio.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/sources"
+        }
+      ],
+      "isLibrary" : false,
+      "moduleName" : "Eavesdropper",
+      "moduleOutputPath" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Modules/Eavesdropper.swiftmodule",
+      "objects" : [
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/AudioProcesses.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/BrowserTabs.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/CalendarFeed.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/CallRecorder.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/Diarizer.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/SpyIcon.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/Transcriber.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/TranscriptsView.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/main.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx26.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j10",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-Xcc",
+        "-fmodule-map-file=/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/MachTaskSelfWrapper/include/module.modulemap",
+        "-Xcc",
+        "-I",
+        "-Xcc",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/MachTaskSelfWrapper/include",
+        "-Xcc",
+        "-fmodule-map-file=/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FastClusterWrapper/include/module.modulemap",
+        "-Xcc",
+        "-I",
+        "-Xcc",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FastClusterWrapper/include",
+        "-module-cache-path",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-Xfrontend",
+        "-entry-point-function-name",
+        "-Xfrontend",
+        "Eavesdropper_main",
+        "-swift-version",
+        "5",
+        "-I",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-L",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-plugin-path",
+        "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "speaker_labels"
+      ],
+      "outputFileMapPath" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/AudioProcesses.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/BrowserTabs.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/CalendarFeed.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/CallRecorder.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/Diarizer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/SpyIcon.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/Transcriber.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/TranscriptsView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/main.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Modules/Eavesdropper.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/AudioProcesses.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/BrowserTabs.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/CalendarFeed.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/CallRecorder.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/Diarizer.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/SpyIcon.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/Transcriber.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/TranscriptsView.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/main.swift"
+      ],
+      "tempsPath" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.EavesdropperCore-arm64-apple-macosx-debug.module" : {
+      "executable" : "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "fileList" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/EavesdropperCore.build/sources",
+      "importPath" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/EavesdropperCore/Calendar.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/EavesdropperCore/CallDetector.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/EavesdropperCore/Meeting.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/EavesdropperCore.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "EavesdropperCore",
+      "moduleOutputPath" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Modules/EavesdropperCore.swiftmodule",
+      "objects" : [
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/EavesdropperCore.build/Calendar.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/EavesdropperCore.build/CallDetector.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/EavesdropperCore.build/Meeting.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx26.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j10",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/EavesdropperCore.build/include/EavesdropperCore-Swift.h",
+        "-swift-version",
+        "5",
+        "-I",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-L",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-plugin-path",
+        "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "speaker_labels"
+      ],
+      "outputFileMapPath" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/EavesdropperCore.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/EavesdropperCore.build/Calendar.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/EavesdropperCore.build/CallDetector.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/EavesdropperCore.build/Meeting.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Modules/EavesdropperCore.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/EavesdropperCore/Calendar.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/EavesdropperCore/CallDetector.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/EavesdropperCore/Meeting.swift"
+      ],
+      "tempsPath" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/EavesdropperCore.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.FluidAudio-arm64-apple-macosx-debug.module" : {
+      "executable" : "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "fileList" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/sources",
+      "importPath" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Clustering/SpeakerManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Clustering/SpeakerOperations.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Clustering/SpeakerTypes.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Core/DiarizerError.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Core/DiarizerTypes.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/DiarizationDER.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/DiarizerProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/DiarizerTimeline.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Extraction/EmbeddingExtractor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/HungarianAssignment.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Clustering/AHCClustering.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Clustering/ConstrainedClusterAssignment.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Clustering/KMeansClustering.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Clustering/SpeakerCountConstraints.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Clustering/VBxClustering.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Core/OfflineDiarizerManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Core/OfflineDiarizerModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Core/OfflineDiarizerTypes.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Core/PreparedDiarization.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Extraction/OfflineEmbeddingExtractor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Extraction/PLDATransform.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Extraction/SilenceAwareFbank.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Extraction/WeightInterpolation.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Segmentation/OfflineSegmentationProcessor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Utils/OfflineReconstruction.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Utils/VDSPOperations.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Utils/ZeroVoteReembedder.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Segmentation/AudioValidation.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Segmentation/SegmentationProcessor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Segmentation/SlidingWindow.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/ModelNames.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ANEMemoryOptimizer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ANEMemoryUtils.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ASRConstants.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AppLogger.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AudioConverter.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AudioMelSpectrogram.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AudioSampleSource.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AudioSource.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AudioSourceFactory.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AudioStream.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/CoreAIStorage.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/Float16Conversion.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/MLArrayCache.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/MLModel+Prediction.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/MLModelConfigurationUtils.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/MLMultiArray+Extensions.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/Math/BlasIndex.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ModelWarmup.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/PerformanceMetrics.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ProgressEmitter.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ProgressHandler.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/StringUtils.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/SystemInfo.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/TokenLanguageFilter.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ZeroCopyFeatureProvider.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FastClusterWrapper.build/FastClusterWrapper.cpp.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/MachTaskSelfWrapper.build/MachTaskSelf.c.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "FluidAudio",
+      "moduleOutputPath" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Modules/FluidAudio.swiftmodule",
+      "objects" : [
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/SpeakerManager.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/SpeakerOperations.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/SpeakerTypes.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/DiarizerError.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/DiarizerTypes.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/DiarizationDER.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/DiarizerProtocol.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/DiarizerTimeline.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/EmbeddingExtractor.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/HungarianAssignment.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AHCClustering.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ConstrainedClusterAssignment.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/KMeansClustering.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/SpeakerCountConstraints.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/VBxClustering.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/OfflineDiarizerManager.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/OfflineDiarizerModels.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/OfflineDiarizerTypes.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/PreparedDiarization.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/OfflineEmbeddingExtractor.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/PLDATransform.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/SilenceAwareFbank.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/WeightInterpolation.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/OfflineSegmentationProcessor.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/OfflineReconstruction.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/VDSPOperations.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ZeroVoteReembedder.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AudioValidation.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/SegmentationProcessor.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/SlidingWindow.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ModelNames.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ANEMemoryOptimizer.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ANEMemoryUtils.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ASRConstants.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AppLogger.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AudioConverter.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AudioMelSpectrogram.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AudioSampleSource.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AudioSource.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AudioSourceFactory.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AudioStream.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/CoreAIStorage.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/Float16Conversion.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/MLArrayCache.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/MLModel+Prediction.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/MLModelConfigurationUtils.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/MLMultiArray+Extensions.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/BlasIndex.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ModelWarmup.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/PerformanceMetrics.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ProgressEmitter.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ProgressHandler.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/StringUtils.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/SystemInfo.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/TokenLanguageFilter.swift.o",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ZeroCopyFeatureProvider.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx26.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j10",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-Xcc",
+        "-fmodule-map-file=/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FastClusterWrapper/include/module.modulemap",
+        "-Xcc",
+        "-I",
+        "-Xcc",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FastClusterWrapper/include",
+        "-Xcc",
+        "-fmodule-map-file=/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/MachTaskSelfWrapper/include/module.modulemap",
+        "-Xcc",
+        "-I",
+        "-Xcc",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/MachTaskSelfWrapper/include",
+        "-module-cache-path",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/include/FluidAudio-Swift.h",
+        "-swift-version",
+        "5",
+        "-DDiarizer",
+        "-I",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-L",
+        "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+        "-plugin-path",
+        "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "speaker_labels"
+      ],
+      "outputFileMapPath" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/SpeakerManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/SpeakerOperations.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/SpeakerTypes.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/DiarizerError.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/DiarizerTypes.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/DiarizationDER.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/DiarizerProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/DiarizerTimeline.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/EmbeddingExtractor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/HungarianAssignment.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AHCClustering.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ConstrainedClusterAssignment.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/KMeansClustering.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/SpeakerCountConstraints.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/VBxClustering.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/OfflineDiarizerManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/OfflineDiarizerModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/OfflineDiarizerTypes.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/PreparedDiarization.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/OfflineEmbeddingExtractor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/PLDATransform.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/SilenceAwareFbank.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/WeightInterpolation.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/OfflineSegmentationProcessor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/OfflineReconstruction.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/VDSPOperations.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ZeroVoteReembedder.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AudioValidation.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/SegmentationProcessor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/SlidingWindow.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ModelNames.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ANEMemoryOptimizer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ANEMemoryUtils.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ASRConstants.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AppLogger.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AudioConverter.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AudioMelSpectrogram.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AudioSampleSource.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AudioSource.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AudioSourceFactory.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AudioStream.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/CoreAIStorage.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/Float16Conversion.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/MLArrayCache.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/MLModel+Prediction.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/MLModelConfigurationUtils.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/MLMultiArray+Extensions.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/BlasIndex.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ModelWarmup.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/PerformanceMetrics.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ProgressEmitter.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ProgressHandler.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/StringUtils.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/SystemInfo.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/TokenLanguageFilter.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ZeroCopyFeatureProvider.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Modules/FluidAudio.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Clustering/SpeakerManager.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Clustering/SpeakerOperations.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Clustering/SpeakerTypes.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Core/DiarizerError.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Core/DiarizerTypes.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/DiarizationDER.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/DiarizerProtocol.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/DiarizerTimeline.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Extraction/EmbeddingExtractor.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/HungarianAssignment.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Clustering/AHCClustering.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Clustering/ConstrainedClusterAssignment.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Clustering/KMeansClustering.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Clustering/SpeakerCountConstraints.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Clustering/VBxClustering.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Core/OfflineDiarizerManager.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Core/OfflineDiarizerModels.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Core/OfflineDiarizerTypes.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Core/PreparedDiarization.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Extraction/OfflineEmbeddingExtractor.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Extraction/PLDATransform.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Extraction/SilenceAwareFbank.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Extraction/WeightInterpolation.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Segmentation/OfflineSegmentationProcessor.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Utils/OfflineReconstruction.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Utils/VDSPOperations.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Utils/ZeroVoteReembedder.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Segmentation/AudioValidation.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Segmentation/SegmentationProcessor.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Segmentation/SlidingWindow.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/ModelNames.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ANEMemoryOptimizer.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ANEMemoryUtils.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ASRConstants.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AppLogger.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AudioConverter.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AudioMelSpectrogram.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AudioSampleSource.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AudioSource.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AudioSourceFactory.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AudioStream.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/CoreAIStorage.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/Float16Conversion.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/MLArrayCache.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/MLModel+Prediction.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/MLModelConfigurationUtils.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/MLMultiArray+Extensions.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/Math/BlasIndex.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ModelWarmup.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/PerformanceMetrics.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ProgressEmitter.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ProgressHandler.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/StringUtils.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/SystemInfo.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/TokenLanguageFilter.swift",
+        "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ZeroCopyFeatureProvider.swift"
+      ],
+      "tempsPath" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build",
+      "wholeModuleOptimization" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "DetectorChecks" : [
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "-module-name",
+      "DetectorChecks",
+      "-package-name",
+      "speaker_labels",
+      "-c",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/DetectorChecks/main.swift",
+      "-I",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx26.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j10",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-Xfrontend",
+      "-entry-point-function-name",
+      "-Xfrontend",
+      "DetectorChecks_main",
+      "-swift-version",
+      "5",
+      "-I",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-L",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-plugin-path",
+      "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "speaker_labels",
+      "-driver-use-frontend-path",
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+    ],
+    "Eavesdropper" : [
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "-module-name",
+      "Eavesdropper",
+      "-package-name",
+      "speaker_labels",
+      "-c",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/AudioProcesses.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/BrowserTabs.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/CalendarFeed.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/CallRecorder.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/Diarizer.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/SpyIcon.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/Transcriber.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/TranscriptsView.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/main.swift",
+      "-I",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx26.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j10",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-Xcc",
+      "-fmodule-map-file=/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/MachTaskSelfWrapper/include/module.modulemap",
+      "-Xcc",
+      "-I",
+      "-Xcc",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/MachTaskSelfWrapper/include",
+      "-Xcc",
+      "-fmodule-map-file=/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FastClusterWrapper/include/module.modulemap",
+      "-Xcc",
+      "-I",
+      "-Xcc",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FastClusterWrapper/include",
+      "-module-cache-path",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-Xfrontend",
+      "-entry-point-function-name",
+      "-Xfrontend",
+      "Eavesdropper_main",
+      "-swift-version",
+      "5",
+      "-I",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-L",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-plugin-path",
+      "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "speaker_labels",
+      "-driver-use-frontend-path",
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+    ],
+    "EavesdropperCore" : [
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "-module-name",
+      "EavesdropperCore",
+      "-package-name",
+      "speaker_labels",
+      "-c",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/EavesdropperCore/Calendar.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/EavesdropperCore/CallDetector.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/EavesdropperCore/Meeting.swift",
+      "-I",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx26.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j10",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/EavesdropperCore.build/include/EavesdropperCore-Swift.h",
+      "-swift-version",
+      "5",
+      "-I",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-L",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-plugin-path",
+      "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "speaker_labels",
+      "-driver-use-frontend-path",
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+    ],
+    "FluidAudio" : [
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "-module-name",
+      "FluidAudio",
+      "-package-name",
+      "speaker_labels",
+      "-c",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Clustering/SpeakerManager.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Clustering/SpeakerOperations.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Clustering/SpeakerTypes.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Core/DiarizerError.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Core/DiarizerTypes.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/DiarizationDER.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/DiarizerProtocol.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/DiarizerTimeline.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Extraction/EmbeddingExtractor.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/HungarianAssignment.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Clustering/AHCClustering.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Clustering/ConstrainedClusterAssignment.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Clustering/KMeansClustering.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Clustering/SpeakerCountConstraints.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Clustering/VBxClustering.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Core/OfflineDiarizerManager.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Core/OfflineDiarizerModels.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Core/OfflineDiarizerTypes.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Core/PreparedDiarization.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Extraction/OfflineEmbeddingExtractor.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Extraction/PLDATransform.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Extraction/SilenceAwareFbank.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Extraction/WeightInterpolation.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Segmentation/OfflineSegmentationProcessor.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Utils/OfflineReconstruction.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Utils/VDSPOperations.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Utils/ZeroVoteReembedder.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Segmentation/AudioValidation.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Segmentation/SegmentationProcessor.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Segmentation/SlidingWindow.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/ModelNames.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ANEMemoryOptimizer.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ANEMemoryUtils.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ASRConstants.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AppLogger.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AudioConverter.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AudioMelSpectrogram.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AudioSampleSource.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AudioSource.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AudioSourceFactory.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AudioStream.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/CoreAIStorage.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/Float16Conversion.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/MLArrayCache.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/MLModel+Prediction.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/MLModelConfigurationUtils.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/MLMultiArray+Extensions.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/Math/BlasIndex.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ModelWarmup.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/PerformanceMetrics.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ProgressEmitter.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ProgressHandler.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/StringUtils.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/SystemInfo.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/TokenLanguageFilter.swift",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ZeroCopyFeatureProvider.swift",
+      "-I",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx26.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j10",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-Xcc",
+      "-fmodule-map-file=/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FastClusterWrapper/include/module.modulemap",
+      "-Xcc",
+      "-I",
+      "-Xcc",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FastClusterWrapper/include",
+      "-Xcc",
+      "-fmodule-map-file=/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/MachTaskSelfWrapper/include/module.modulemap",
+      "-Xcc",
+      "-I",
+      "-Xcc",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/MachTaskSelfWrapper/include",
+      "-module-cache-path",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/include/FluidAudio-Swift.h",
+      "-swift-version",
+      "5",
+      "-DDiarizer",
+      "-I",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-L",
+      "/Library/Developer/CommandLineTools/Library/Developer/Frameworks",
+      "-plugin-path",
+      "/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "speaker_labels",
+      "-driver-use-frontend-path",
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "DetectorChecks" : [
+      "EavesdropperCore"
+    ],
+    "Eavesdropper" : [
+      "FluidAudio",
+      "MachTaskSelfWrapper",
+      "FastClusterWrapper",
+      "EavesdropperCore"
+    ],
+    "EavesdropperCore" : [
+
+    ],
+    "FastClusterWrapper" : [
+
+    ],
+    "FluidAudio" : [
+      "MachTaskSelfWrapper",
+      "FastClusterWrapper"
+    ],
+    "MachTaskSelfWrapper" : [
+
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+
+  },
+  "traitConfiguration" : {
+    "default" : [
+      {
+
+      }
+    ]
+  },
+  "writeCommands" : {
+    "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/DetectorChecks-entitlement.plist" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<entitlement-plist>"
+        },
+        {
+          "kind" : "virtual",
+          "name" : "<com.apple.security.get-task-allow>"
+        }
+      ],
+      "outputFilePath" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/DetectorChecks-entitlement.plist"
+    },
+    "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/DetectorChecks.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/DetectorChecks/main.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/DetectorChecks.build/sources"
+    },
+    "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/DetectorChecks.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/DetectorChecks.build/main.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/EavesdropperCore.build/Calendar.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/EavesdropperCore.build/CallDetector.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/EavesdropperCore.build/Meeting.swift.o"
+        }
+      ],
+      "outputFilePath" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/DetectorChecks.product/Objects.LinkFileList"
+    },
+    "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper-entitlement.plist" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<entitlement-plist>"
+        },
+        {
+          "kind" : "virtual",
+          "name" : "<com.apple.security.get-task-allow>"
+        }
+      ],
+      "outputFilePath" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper-entitlement.plist"
+    },
+    "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/AudioProcesses.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/BrowserTabs.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/CalendarFeed.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/CallRecorder.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/Diarizer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/SpyIcon.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/Transcriber.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/TranscriptsView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/Eavesdropper/main.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/sources"
+    },
+    "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/AudioProcesses.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/BrowserTabs.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/CalendarFeed.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/CallRecorder.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/Diarizer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/SpyIcon.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/Transcriber.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/TranscriptsView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.build/main.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/EavesdropperCore.build/Calendar.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/EavesdropperCore.build/CallDetector.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/EavesdropperCore.build/Meeting.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FastClusterWrapper.build/FastClusterWrapper.cpp.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AHCClustering.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ANEMemoryOptimizer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ANEMemoryUtils.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ASRConstants.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AppLogger.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AudioConverter.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AudioMelSpectrogram.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AudioSampleSource.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AudioSource.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AudioSourceFactory.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AudioStream.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/AudioValidation.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/BlasIndex.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ConstrainedClusterAssignment.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/CoreAIStorage.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/DiarizationDER.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/DiarizerError.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/DiarizerProtocol.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/DiarizerTimeline.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/DiarizerTypes.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/EmbeddingExtractor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/Float16Conversion.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/HungarianAssignment.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/KMeansClustering.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/MLArrayCache.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/MLModel+Prediction.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/MLModelConfigurationUtils.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/MLMultiArray+Extensions.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ModelNames.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ModelWarmup.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/OfflineDiarizerManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/OfflineDiarizerModels.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/OfflineDiarizerTypes.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/OfflineEmbeddingExtractor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/OfflineReconstruction.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/OfflineSegmentationProcessor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/PLDATransform.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/PerformanceMetrics.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/PreparedDiarization.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ProgressEmitter.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ProgressHandler.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/SegmentationProcessor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/SilenceAwareFbank.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/SlidingWindow.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/SpeakerCountConstraints.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/SpeakerManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/SpeakerOperations.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/SpeakerTypes.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/StringUtils.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/SystemInfo.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/TokenLanguageFilter.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/VBxClustering.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/VDSPOperations.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/WeightInterpolation.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ZeroCopyFeatureProvider.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/ZeroVoteReembedder.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/MachTaskSelfWrapper.build/MachTaskSelf.c.o"
+        }
+      ],
+      "outputFilePath" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/Eavesdropper.product/Objects.LinkFileList"
+    },
+    "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/EavesdropperCore.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/EavesdropperCore/Calendar.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/EavesdropperCore/CallDetector.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Sources/EavesdropperCore/Meeting.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/EavesdropperCore.build/sources"
+    },
+    "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Clustering/SpeakerManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Clustering/SpeakerOperations.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Clustering/SpeakerTypes.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Core/DiarizerError.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Core/DiarizerTypes.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/DiarizationDER.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/DiarizerProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/DiarizerTimeline.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Extraction/EmbeddingExtractor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/HungarianAssignment.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Clustering/AHCClustering.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Clustering/ConstrainedClusterAssignment.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Clustering/KMeansClustering.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Clustering/SpeakerCountConstraints.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Clustering/VBxClustering.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Core/OfflineDiarizerManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Core/OfflineDiarizerModels.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Core/OfflineDiarizerTypes.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Core/PreparedDiarization.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Extraction/OfflineEmbeddingExtractor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Extraction/PLDATransform.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Extraction/SilenceAwareFbank.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Extraction/WeightInterpolation.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Segmentation/OfflineSegmentationProcessor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Utils/OfflineReconstruction.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Utils/VDSPOperations.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Offline/Utils/ZeroVoteReembedder.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Segmentation/AudioValidation.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Segmentation/SegmentationProcessor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Diarizer/Segmentation/SlidingWindow.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/ModelNames.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ANEMemoryOptimizer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ANEMemoryUtils.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ASRConstants.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AppLogger.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AudioConverter.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AudioMelSpectrogram.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AudioSampleSource.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AudioSource.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AudioSourceFactory.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/AudioStream.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/CoreAIStorage.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/Float16Conversion.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/MLArrayCache.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/MLModel+Prediction.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/MLModelConfigurationUtils.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/MLMultiArray+Extensions.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/Math/BlasIndex.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ModelWarmup.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/PerformanceMetrics.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ProgressEmitter.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ProgressHandler.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/StringUtils.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/SystemInfo.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/TokenLanguageFilter.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/Vendor/FluidAudio/Sources/FluidAudio/Shared/ZeroCopyFeatureProvider.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/FluidAudio.build/sources"
+    },
+    "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/Users/davidkim/workspace/eavesdropper/.worktrees/speaker-labels/.build4/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+    }
+  }
+}
