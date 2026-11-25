@@ -14,14 +14,16 @@ git fetch -q origin main --tags
 [ "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)" ] || fail "main is not in sync with origin/main"
 if git rev-parse -q --verify "refs/tags/$tag" >/dev/null; then fail "$tag already exists: bump VERSION"; fi
 
+# Build into dist/ so a release never replaces the app you're running.
+export APP=dist/Eavesdropper.app
+mkdir -p dist
 ./verify-reproducible.sh
 ./build-app.sh
 ./verify.sh
 
-mkdir -p dist
 zip="dist/Eavesdropper-$version.zip"
 rm -f "$zip"
-ditto -c -k --keepParent --norsrc Eavesdropper.app "$zip"
+ditto -c -k --keepParent --norsrc "$APP" "$zip"
 sha="$(shasum -a 256 "$zip" | cut -d' ' -f1)"
 echo "$sha  $(basename "$zip")" > "$zip.sha256"
 

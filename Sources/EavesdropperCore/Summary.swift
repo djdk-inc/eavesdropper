@@ -52,3 +52,29 @@ public func cleanNotes(_ notes: String) -> String {
         return !body.isEmpty && !body.allSatisfy { empties.contains($0) }
     }.map { $0.joined(separator: "\n") }.joined(separator: "\n").trimmingCharacters(in: .whitespacesAndNewlines)
 }
+
+/// A piece of model-written notes for display: a "## " heading or a line of text.
+public enum NoteBlock: Equatable, Sendable {
+    case heading(String)
+    case line(String)
+}
+
+/// Splits notes into headings and lines ("- " bullets become "• "), dropping blank lines and the leading "Summary" heading
+/// (the window already titles the section "Summary").
+public func noteBlocks(_ notes: String) -> [NoteBlock] {
+    var blocks = [NoteBlock]()
+    for raw in notes.components(separatedBy: "\n") {
+        let line = raw.trimmingCharacters(in: .whitespaces)
+        guard !line.isEmpty else { continue }
+        if line.hasPrefix("#") {
+            let title = line.drop(while: { $0 == "#" }).trimmingCharacters(in: .whitespaces)
+            if blocks.isEmpty, title.lowercased() == "summary" { continue }
+            blocks.append(.heading(title))
+        } else if line.hasPrefix("- ") || line.hasPrefix("* ") {
+            blocks.append(.line("• " + line.dropFirst(2)))
+        } else {
+            blocks.append(.line(line))
+        }
+    }
+    return blocks
+}

@@ -136,6 +136,31 @@ if args.contains("--summarize") {
     RunLoop.main.run()
 }
 
+/// `--render [meeting id]`: write a PNG of the newest (or given) meeting's page to stdout, as the
+/// window shows it in dark mode. For checking the layout and README screenshots.
+if let i = args.firstIndex(of: "--render") {
+    MainActor.assumeIsolated {
+        let list = MeetingList(store: store)
+        let wanted = i + 1 < args.count ? args[i + 1] : nil
+        guard let meeting = list.meetings.first(where: { wanted == nil || $0.id.hasPrefix(wanted!) }) else {
+            FileHandle.standardError.write(Data("no meeting\n".utf8))
+            exit(1)
+        }
+        let view = MeetingDetail(meeting: meeting, list: list).page
+            .frame(width: 900)
+            .background(Color(nsColor: .windowBackgroundColor))
+            .environment(\.colorScheme, .dark)
+        let renderer = ImageRenderer(content: view)
+        renderer.scale = 2
+        guard let cg = renderer.cgImage, let png = NSBitmapImageRep(cgImage: cg).representation(using: .png, properties: [:]) else {
+            FileHandle.standardError.write(Data("render failed\n".utf8))
+            exit(1)
+        }
+        FileHandle.standardOutput.write(png)
+        exit(0)
+    }
+}
+
 /// `--record <pid> <seconds> <folder>`: record one process's sound plus the mic, as during a call.
 if let i = args.firstIndex(of: "--record"), i + 3 < args.count, let pid = Int32(args[i + 1]), let seconds = Double(args[i + 2]) {
     let ids = audioProcesses().filter { $0.pid == pid }.map(\.objectID)

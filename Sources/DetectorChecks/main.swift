@@ -189,6 +189,11 @@ let raw = "## Summary\nShip Wednesday.\n\n## Decisions\n- Wednesday.\n\n## Actio
 expect(cleanNotes(raw) == "## Summary\nShip Wednesday.\n\n## Decisions\n- Wednesday.", "empty and None sections dropped (\(cleanNotes(raw).debugDescription))")
 expect(speakerLabels(merged) == ["You", "Others"], "speaker labels in first-appearance order")
 
+// Notes display blocks
+expect(noteBlocks("## Summary\nShip Wednesday.\n\n## Action items\n- Karen: fix\n### Extra") ==
+       [.line("Ship Wednesday."), .heading("Action items"), .line("• Karen: fix"), .heading("Extra")],
+       "headings parsed, leading Summary heading dropped, blanks skipped")
+
 // Store round trip
 let dir = FileManager.default.temporaryDirectory.appendingPathComponent("eavesdropper-checks-\(UUID().uuidString)")
 let s2 = MeetingStore(root: dir)
