@@ -41,16 +41,27 @@ Two processes with one-way data flow:
 - **Branches and worktrees.** Work happens on a branch in its own git worktree, never in the main checkout. Finished work goes to `main` through a squash-merged PR, merged as soon as it's verified (no need to ask).
 - **No new dependencies.** `Package.swift` has no external packages, and nothing is fetched at build time or run time. Outside code is vendored with its license and a NOTICE of changes; models live in `Models/` with provenance.
 - **Crash safety.** Audio is recorded as uncompressed CAF, which stays readable after a hard kill; `.m4a` doesn't. It's compressed to `.m4a` after transcription. SIGTERM, SIGINT and Quit save the meeting as `transcribing`, and launch recovers every `recording`/`transcribing` meeting (`recoverUnfinished`). Background work changes meetings only through `MeetingStore.update`, one field at a time, never by saving a stale copy.
-- **Don't rebuild over a running app.** Replacing the bundle under a running process invalidates its signature, and macOS then hands it silent audio. Quit the app first. Each ad-hoc-signed build counts as a new app, so macOS asks for Microphone, System Audio Recording and browser automation again.
+- **Don't rebuild over a running app.** Replacing the bundle under a running process invalidates its signature, and macOS then hands it silent audio. `./build.sh install` quits the app before replacing it.
+- **Stable signing.** Every build is signed with the local "DJDK Local Code Signing" certificate (`./build.sh` creates and trusts it on first run; override with `CODESIGN_IDENTITY`). macOS keys privacy grants on `identifier "com.djdk.eavesdropper" and certificate leaf`, so grants survive rebuilds. Never sign ad-hoc (`--sign -`) and never change the bundle identifiers: either resets every grant. `build-app.sh` falls back to ad-hoc with a warning only when the certificate is missing. Releases and `verify-reproducible.sh` sign ad-hoc on purpose (`CODESIGN_IDENTITY=-`): a certificate signature embeds its signing time, so only ad-hoc builds are byte-identical.
 
-## Commands
+## How to operate
+
+Same three commands as every djdk-inc Mac app (Campfire, Zen):
 
 ```bash
-./build-app.sh              # hermetic release build → Eavesdropper.app (network denied during the build)
+./build.sh test             # logic checks (DetectorChecks)
+./build.sh                  # hermetic release build → dist/Eavesdropper.app (network denied during the build)
+./build.sh install          # test + build + verify.sh, quit the running app, replace /Applications/Eavesdropper.app, launch
+```
+
+Underneath, and for releases:
+
+```bash
+./build-app.sh              # the hermetic build itself (APP= sets the output; default dist/Eavesdropper.app)
 ./verify.sh                 # logic checks + isolation checks on the built app
 ./verify-reproducible.sh    # two clean builds must be byte-identical
 ./release.sh                # tag v$(cat VERSION) and publish a GitHub release (from a clean, synced main)
-swift run --build-system native DetectorChecks
+./live-test.py --rounds 3   # end-to-end on the installed /Applications/Eavesdropper.app
 ```
 
 Diagnostic modes on the built binary (`Eavesdropper.app/Contents/MacOS/Eavesdropper`), all running inside the sandbox:

@@ -16,6 +16,8 @@ if git rev-parse -q --verify "refs/tags/$tag" >/dev/null; then fail "$tag alread
 
 # Build into dist/ so a release never replaces the app you're running.
 export APP=dist/Eavesdropper.app
+# Releases are ad-hoc signed so anyone can rebuild them byte-for-byte (a certificate signature embeds a time).
+export CODESIGN_IDENTITY=-
 mkdir -p dist
 ./verify-reproducible.sh
 ./build-app.sh
