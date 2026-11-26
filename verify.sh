@@ -6,7 +6,7 @@
 #  - the calendar helper is the only bundled code without the sandbox
 set -euo pipefail
 cd "$(dirname "$0")"
-app="${APP:-Eavesdropper.app}"
+app="${APP:-dist/Eavesdropper.app}"
 fail() { echo "FAIL: $*" >&2; exit 1; }
 
 swift build --build-system native --scratch-path .build --product DetectorChecks --disable-sandbox >/dev/null

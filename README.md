@@ -38,17 +38,19 @@ The model runs on the Mac's Apple Silicon in a macOS system process. Eavesdroppe
 - **Only calendar metadata uses the network.** A separate helper, `Eavesdropper Calendar.app` (inside the app bundle), fetches your Google Calendar through the private iCal address (`GOOGLE_CALENDAR_ICS_URL` in Secret Manager, read with your `gcloud` login). It hands the recorder invite metadata through a read-only file, and never receives meeting data.
 - **Meetings stay in the app's container**: `~/Library/Containers/com.djdk.eavesdropper/Data/Recordings/Eavesdropper/<start> <app>/`, holding `meeting.json`, `mic.m4a` and `call.m4a`.
 
-## Build and run
+## Build and install
 
 Needs macOS 26+ and the Xcode Command Line Tools (Swift version pinned in `.swift-toolchain`).
 
 ```bash
-./build-app.sh        # hermetic: no network during the build; version stamped from VERSION + git
-./verify.sh           # logic + isolation checks
-open Eavesdropper.app
+./build.sh test      # logic checks
+./build.sh           # hermetic build → dist/Eavesdropper.app (no network during the build)
+./build.sh install   # test + build + verify, quit the running app, replace /Applications/Eavesdropper.app, launch
 ```
 
-Each new build counts as a new app to macOS, which then asks for Microphone, System Audio Recording, and control of your browser (to read tab URLs). Allow all three. Quit the running app before rebuilding.
+Every build is signed with the same local certificate, "DJDK Local Code Signing" (the first build creates it in your
+login keychain; macOS asks for your password once to trust it). So macOS asks for Microphone, System Audio Recording
+and browser control once, and the grants survive rebuilds. Allow all three.
 
 Live test: `./live-test.py --rounds 3` drives the installed app through Start/Stop Listening (`Eavesdropper --control start|stop`) and plays generated meetings through the speakers. Each meeting is a random dialogue spoken by random human-sounding local voices (Kokoro, test-only; setup in [AGENTS.md](AGENTS.md)). The script checks that the recording is complete, the words were heard, speakers are labelled, and both sides line up. Last run on 0.4.2: 3/3 passed, 94–99% of words heard, sides within 0.12 s.
 

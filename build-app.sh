@@ -26,7 +26,7 @@ scratch="${SCRATCH:-.build-release}"
 sandbox-exec -p '(version 1)(allow default)(deny network-outbound (remote ip))(deny network-inbound (local ip))' \
     swift build -c release --build-system native --scratch-path "$scratch" --disable-automatic-resolution --disable-sandbox
 
-app="${APP:-Eavesdropper.app}"
+app="${APP:-dist/Eavesdropper.app}"
 helper="$app/Contents/Helpers/Eavesdropper Calendar.app"
 rm -rf "$app"
 mkdir -p "$app/Contents/MacOS" "$app/Contents/Resources" "$helper/Contents/MacOS"
@@ -61,6 +61,9 @@ plist com.djdk.eavesdropper Eavesdropper Eavesdropper '    <key>LSUIElement</key
 plist com.djdk.eavesdropper.calendar "Eavesdropper Calendar" EavesdropperCalendar '    <key>LSBackgroundOnly</key><true/>' \
     > "$helper/Contents/Info.plist"
 
-codesign --force --sign - --timestamp=none "$helper"
-codesign --force --sign - --timestamp=none --entitlements Eavesdropper.entitlements "$app"
+# Stable identity keeps macOS privacy grants across rebuilds (./build.sh creates it); ad-hoc otherwise.
+sign_id="${CODESIGN_IDENTITY:-DJDK Local Code Signing}"
+security find-certificate -c "$sign_id" >/dev/null 2>&1 || { echo "warning: no \"$sign_id\" signing identity; ad-hoc signing, so macOS asks for permissions again" >&2; sign_id=-; }
+codesign --force --sign "$sign_id" --timestamp=none "$helper"
+codesign --force --sign "$sign_id" --timestamp=none --entitlements Eavesdropper.entitlements "$app"
 echo "built $(pwd)/$app — Eavesdropper $version (build $build, $commit)"
