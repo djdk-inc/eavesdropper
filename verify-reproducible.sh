@@ -2,6 +2,8 @@
 # Rebuilds the app twice from scratch and checks both builds are byte-identical.
 set -euo pipefail
 cd "$(dirname "$0")"
+# Ad-hoc signing: a certificate signature embeds its signing time, so it can never be byte-identical.
+export CODESIGN_IDENTITY=-
 tree_hash() { (cd "$1" && find . -type f -print0 | LC_ALL=C sort -z | xargs -0 shasum -a 256) | shasum -a 256 | cut -d' ' -f1; }
 for run in a b; do
     rm -rf .build-repro "Eavesdropper-$run.app"

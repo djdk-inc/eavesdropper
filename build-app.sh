@@ -63,7 +63,7 @@ plist com.djdk.eavesdropper.calendar "Eavesdropper Calendar" EavesdropperCalenda
 
 # Stable identity keeps macOS privacy grants across rebuilds (./build.sh creates it); ad-hoc otherwise.
 sign_id="${CODESIGN_IDENTITY:-DJDK Local Code Signing}"
-security find-certificate -c "$sign_id" >/dev/null 2>&1 || { echo "warning: no \"$sign_id\" signing identity; ad-hoc signing, so macOS asks for permissions again" >&2; sign_id=-; }
+[ "$sign_id" = - ] || security find-certificate -c "$sign_id" >/dev/null 2>&1 || { echo "warning: no \"$sign_id\" signing identity; ad-hoc signing, so macOS asks for permissions again" >&2; sign_id=-; }
 codesign --force --sign "$sign_id" --timestamp=none "$helper"
 codesign --force --sign "$sign_id" --timestamp=none --entitlements Eavesdropper.entitlements "$app"
 echo "built $(pwd)/$app — Eavesdropper $version (build $build, $commit)"
